@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "parcel": "^2.13.3"
+  }
+  ,
+  "name": "my-project",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel serve index.html --port 3000",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "latest"
+  }
+
+}
+
+  

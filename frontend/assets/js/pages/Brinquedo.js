@@ -1,0 +1,2 @@
+// aq é onde vai ficar o close up do brinquedo, a descriçao, categoria e todas as informaçaoes do brinquedo mokadas pro cliente ver e pa essa linha de comentario ta ficando gigantesca.
+//eu acabei de perceber q nao fiz uma pasta pra cada pagina ,isso vai ficar uma bagunça, o rafa resolve, se nao conseguir botar os arquivos em uma nova pasta e mudar as referecias a esse arquivos, pode se desmantelar todo q nem uum lego.
