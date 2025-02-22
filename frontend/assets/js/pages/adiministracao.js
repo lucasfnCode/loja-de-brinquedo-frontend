@@ -2,7 +2,7 @@ import { CreateMain } from "../components/main"
 
 export const adiministracao = ()=>{
     const $adm =`
-    <table class="table  table-striped">
+    <table class="table table-striped w-75 my-3">
         <thead>
             <tr>
             <th scope="col">Descriçao</th>
@@ -29,5 +29,6 @@ export const adiministracao = ()=>{
     </table>
     `
     const main = CreateMain()
+     main.classList = "d-flex flex-col"
     main.insertAdjacentHTML("beforeend",$adm)
 }

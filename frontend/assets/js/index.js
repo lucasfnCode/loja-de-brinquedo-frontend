@@ -1,13 +1,17 @@
+import { createHeader } from "./components/header"
 import { SideBar } from "./components/sidebar";
 import { ClearBody } from "./functions/clearbody";
+import { aboutUs } from "./pages/about";
 import { adiministracao } from "./pages/adiministracao";
 import { criarCatalogo } from "./pages/catalogo";
 import { homePage } from "./pages/home";
 
 function renderByHashChange(){
-    ClearBody()
-
-    SideBar()
+    
+    ClearBody();
+   
+  
+    SideBar();
     switch(location.hash){
         case '':
         case undefined:
@@ -20,8 +24,10 @@ function renderByHashChange(){
         case '#adhemin':
             adiministracao();
             break;
+        case '#about':
+            aboutUs();
     }   
-
+    
 }
 
 

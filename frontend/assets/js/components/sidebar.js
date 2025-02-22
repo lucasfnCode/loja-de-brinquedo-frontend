@@ -2,7 +2,7 @@ import { CreateMain } from "./main"
 
 export const SideBar=()=>{
     const $sidebar =`
-    <section class="sidebar" id="sidebar">
+    <section class="sidebar me-5 ms-2 id="sidebar">
         <h1>menu principal</h1>
         <nav>
             <ul class="navbar-nav">

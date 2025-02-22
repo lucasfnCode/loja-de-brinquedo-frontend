@@ -4,22 +4,22 @@ import { CreateMain } from "../components/main"
 // vou fazer os html funcionar vcs q se virem depois
 export function criarCatalogo (){
     const $catalogo = `
-        <section class="fs-2 p-4">
+        <section class="p-2">
             <h2>
                 brinquedos em destaque
             </h2>
-             <ul>
-                <li class="toy-cell">
+             <ul class="d-flex p-0 m-0">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descriçao</label>
                     <p>preço</p>
                 </li>
-                <li class="toy-cell">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descriçao</label>
                     <p>preço</p>
                 </li>
-                <li class="toy-cell">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descriçao</label>
                     <p>preço</p>
@@ -28,5 +28,6 @@ export function criarCatalogo (){
         </section>
     `    
     const main = CreateMain();
+     main.classList = "d-flex flex-col"
     main.insertAdjacentHTML("beforeend",$catalogo)
 }

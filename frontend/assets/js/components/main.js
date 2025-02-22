@@ -1,6 +1,7 @@
 export const CreateMain = () =>
     {
         let main = document.getElementById('main');
+        
         if (!main) {
             main = document.createElement('main');
             main.id = 'main';

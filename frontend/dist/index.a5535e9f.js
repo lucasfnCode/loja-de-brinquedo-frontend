@@ -596,8 +596,10 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"1E7ZB":[function(require,module,exports,__globalThis) {
+var _header = require("./components/header");
 var _sidebar = require("./components/sidebar");
 var _clearbody = require("./functions/clearbody");
+var _about = require("./pages/about");
 var _adiministracao = require("./pages/adiministracao");
 var _catalogo = require("./pages/catalogo");
 var _home = require("./pages/home");
@@ -616,13 +618,15 @@ function renderByHashChange() {
         case '#adhemin':
             (0, _adiministracao.adiministracao)();
             break;
+        case '#about':
+            (0, _about.aboutUs)();
     }
 }
 renderByHashChange();
 window.addEventListener('hashchange', renderByHashChange);
 window.addEventListener("load", renderByHashChange);
 
-},{"./pages/home":"1VBCE","./functions/clearbody":"e1A7F","./components/sidebar":"2O7Kx","./pages/catalogo":"3q6Yq","./pages/adiministracao":"bkeon"}],"1VBCE":[function(require,module,exports,__globalThis) {
+},{"./pages/home":"1VBCE","./functions/clearbody":"e1A7F","./components/sidebar":"2O7Kx","./pages/catalogo":"3q6Yq","./pages/adiministracao":"bkeon","./pages/about":"8zoV7","./components/header":"i9Hva"}],"1VBCE":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "homePage", ()=>homePage);
@@ -630,20 +634,20 @@ var _main = require("../components/main");
 const homePage = ()=>{
     const $homeHTML = `
     
-        <section class="main_content">
+        <section class="p-2">
             <h2>Brinquedos em destaque</h2>
-            <ul>
-                <li class="toy-cell">
+            <ul class="row p-0 m-0">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descri\xe7ao</label>
                     <p>pre\xe7o</p>
                 </li>
-                <li class="toy-cell">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descri\xe7ao</label>
                     <p>pre\xe7o</p>
                 </li>
-                <li class="toy-cell">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descri\xe7ao</label>
                     <p>pre\xe7o</p>
@@ -652,6 +656,7 @@ const homePage = ()=>{
         </section>
     `;
     const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col";
     main.insertAdjacentHTML('beforeend', $homeHTML);
 };
 
@@ -724,7 +729,7 @@ parcelHelpers.export(exports, "SideBar", ()=>SideBar);
 var _main = require("./main");
 const SideBar = ()=>{
     const $sidebar = `
-    <section class="sidebar" id="sidebar">
+    <section class="sidebar me-5 ms-2 id="sidebar">
         <h1>menu principal</h1>
         <nav>
             <ul class="navbar-nav">
@@ -767,22 +772,22 @@ parcelHelpers.export(exports, "criarCatalogo", ()=>criarCatalogo);
 var _main = require("../components/main");
 function criarCatalogo() {
     const $catalogo = `
-        <section class="fs-2 p-4">
+        <section class="p-2">
             <h2>
                 brinquedos em destaque
             </h2>
-             <ul>
-                <li class="toy-cell">
+             <ul class="d-flex p-0 m-0">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descri\xe7ao</label>
                     <p>pre\xe7o</p>
                 </li>
-                <li class="toy-cell">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descri\xe7ao</label>
                     <p>pre\xe7o</p>
                 </li>
-                <li class="toy-cell">
+                <li class="list-group-item col m-3">
                     <img src="" alt="brinquedo1">
                     <label for="brinquedo1">descri\xe7ao</label>
                     <p>pre\xe7o</p>
@@ -791,6 +796,7 @@ function criarCatalogo() {
         </section>
     `;
     const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col";
     main.insertAdjacentHTML("beforeend", $catalogo);
 }
 
@@ -801,7 +807,7 @@ parcelHelpers.export(exports, "adiministracao", ()=>adiministracao);
 var _main = require("../components/main");
 const adiministracao = ()=>{
     const $adm = `
-    <table class="table  table-striped">
+    <table class="table table-striped w-75 my-3">
         <thead>
             <tr>
             <th scope="col">Descri\xe7ao</th>
@@ -828,9 +834,80 @@ const adiministracao = ()=>{
     </table>
     `;
     const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col";
     main.insertAdjacentHTML("beforeend", $adm);
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8zoV7":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "aboutUs", ()=>aboutUs);
+var _main = require("../components/main");
+const aboutUs = ()=>{
+    const $about = `
+    <section class="d-inline p-2">
+            <h2 class="w-100"> Sobre a Equipe </h2>
+
+          <ul class="d-inline-flex row p-0 m-0">
+          
+                <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">luketa</label>
+                    <p>RGM</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">felpopinho</label>
+                    <p>RGM</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">ygona</label>
+                    <p>RGM</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">jabriel</label>
+                    <p>RGM</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">phafael o mais bixa de bh</label>
+                    <p>RGM</p>
+                </li>
+                 <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">alan</label>
+                    <p>RGM</p>
+                </li>
+            </ul>
+    <section>
+    `;
+    const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col";
+    main.insertAdjacentHTML("beforeend", $about);
+} // amanha eu termina essa pika
+ // NAO TENHO O GIT Q DELICIA
+ // VOU FICAR MAIS MEIA HORA OLLHANDO PRA ESSA TELA PRETA FEIA E .. ja baixo
+ // instalando se vc ta lendo isso vc ta muito desocupado
+;
+
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i9Hva":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createHeader", ()=>createHeader);
+var _main = require("./main");
+const createHeader = ()=>{
+    const header = document.createElement('header');
+    header.innerHTML = $header;
+    const $header = `
+            <img src="" alt="logo">
+            <h1>Nome da loja de Brinquedo</h1>
+    `;
+    header.classList = "w-100 d-flex";
+    document.body.insertAdjacentElement('afterbegin', header);
+};
+
+},{"./main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
 
 //# sourceMappingURL=index.a5535e9f.js.map
