@@ -1,2 +1,25 @@
-// aq é onde vai ficar o close up do brinquedo, a descriçao, categoria e todas as informaçaoes do brinquedo mokadas pro cliente ver e pa essa linha de comentario ta ficando gigantesca.
-//eu acabei de perceber q nao fiz uma pasta pra cada pagina ,isso vai ficar uma bagunça, o rafa resolve, se nao conseguir botar os arquivos em uma nova pasta e mudar as referecias a esse arquivos, pode se desmantelar todo q nem uum lego.
+import { CreateMain } from "../components/main"
+import placeholder from "../../media/pistatubarao.jpg"
+const img1 = placeholder;
+
+export const criarBrinquedo=()=>{
+
+    const $brinquedo = `
+    <section class="container">
+   
+        <section class="row">
+          <h2>nome do brinquedo</h2>
+                <img class="col-sm-3 img-thumbnail bg-dark" src="${img1}"></img>
+                <section class="col align-items-center">
+                    <p class="col fs-4"> codigo do brinquedo</p> 
+                    <p class="col fs-1">Descriçao do brinquedo</p>
+                    <p class="col fs-3">R$</p>
+                </section>
+        </section>
+        <p>detalhes do brinquedo lorem nunsei oq nunsei oqla </p>
+    </section>
+    `
+    const main = CreateMain()
+    main.classList = "d-flex"
+    main.insertAdjacentHTML('beforeend',$brinquedo)
+}

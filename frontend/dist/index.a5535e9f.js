@@ -601,6 +601,7 @@ var _sidebar = require("./components/sidebar");
 var _clearbody = require("./functions/clearbody");
 var _about = require("./pages/about");
 var _adiministracao = require("./pages/adiministracao");
+var _brinquedo = require("./pages/Brinquedo");
 var _catalogo = require("./pages/catalogo");
 var _home = require("./pages/home");
 function renderByHashChange() {
@@ -620,36 +621,51 @@ function renderByHashChange() {
             break;
         case '#about':
             (0, _about.aboutUs)();
+            break;
+        case '#brinquedo':
+            (0, _brinquedo.criarBrinquedo)();
+            break;
     }
 }
 renderByHashChange();
 window.addEventListener('hashchange', renderByHashChange);
 window.addEventListener("load", renderByHashChange);
 
-},{"./pages/home":"1VBCE","./functions/clearbody":"e1A7F","./components/sidebar":"2O7Kx","./pages/catalogo":"3q6Yq","./pages/adiministracao":"bkeon","./pages/about":"8zoV7","./components/header":"i9Hva"}],"1VBCE":[function(require,module,exports,__globalThis) {
+},{"./pages/home":"1VBCE","./functions/clearbody":"e1A7F","./components/sidebar":"2O7Kx","./pages/catalogo":"3q6Yq","./pages/adiministracao":"bkeon","./pages/about":"8zoV7","./components/header":"i9Hva","./pages/Brinquedo":"4PeLC"}],"1VBCE":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "homePage", ()=>homePage);
 var _main = require("../components/main");
+var _pistatubaraoJpg = require("../../media/pistatubarao.jpg");
+var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
+var _ben10PikaJpg = require("../../media/ben10pika.jpg");
+var _ben10PikaJpgDefault = parcelHelpers.interopDefault(_ben10PikaJpg);
+var _jaboloJpg = require("../../media/jabolo.jpg");
+var _jaboloJpgDefault = parcelHelpers.interopDefault(_jaboloJpg);
+const img3 = (0, _jaboloJpgDefault.default);
+const img2 = (0, _ben10PikaJpgDefault.default);
+const img1 = (0, _pistatubaraoJpgDefault.default);
 const homePage = ()=>{
     const $homeHTML = `
     
-        <section class="p-2">
+        <section class="p-2 d-grid">
             <h2>Brinquedos em destaque</h2>
-            <ul class="row p-0 m-0">
+            <ul class="row p-0 m-0 text-center">
                 <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
+                    <a href="#brinquedo">
+                        <img src="${img1}" alt="brinquedo1" >
+                        <p" class="d-block ">dedscri\xe7ao</p>
+                        <p>pre\xe7o</p>
+                    </a>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="${img2}" alt="brinquedo1">
+                    <p" class="d-block ">descri\xe7ao</p>
                     <p>pre\xe7o</p>
                 </li>
                 <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
-                    <p>pre\xe7o</p>
-                </li>
-                <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descri\xe7ao</p>
                     <p>pre\xe7o</p>
                 </li>
             </ul>
@@ -660,7 +676,7 @@ const homePage = ()=>{
     main.insertAdjacentHTML('beforeend', $homeHTML);
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gfq3l":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../media/pistatubarao.jpg":"eyp5S","../../media/ben10pika.jpg":"agZqH","../../media/jabolo.jpg":"3Vtic"}],"gfq3l":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "CreateMain", ()=>CreateMain);
@@ -708,7 +724,51 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"e1A7F":[function(require,module,exports,__globalThis) {
+},{}],"eyp5S":[function(require,module,exports,__globalThis) {
+module.exports = require("f896fc228d1f03ef").getBundleURL('cOZeh') + "pistatubarao.a1425f1f.jpg" + "?" + Date.now();
+
+},{"f896fc228d1f03ef":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ('' + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"agZqH":[function(require,module,exports,__globalThis) {
+module.exports = require("f06e5b22190ecc45").getBundleURL('cOZeh') + "ben10pika.8685591c.jpg" + "?" + Date.now();
+
+},{"f06e5b22190ecc45":"lgJ39"}],"3Vtic":[function(require,module,exports,__globalThis) {
+module.exports = require("9630b1f20b46c6d0").getBundleURL('cOZeh') + "jabolo.2d65496e.jpg" + "?" + Date.now();
+
+},{"9630b1f20b46c6d0":"lgJ39"}],"e1A7F":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ClearBody", ()=>ClearBody);
@@ -908,6 +968,35 @@ const createHeader = ()=>{
     document.body.insertAdjacentElement('afterbegin', header);
 };
 
-},{"./main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
+},{"./main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4PeLC":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "criarBrinquedo", ()=>criarBrinquedo);
+var _main = require("../components/main");
+var _pistatubaraoJpg = require("../../media/pistatubarao.jpg");
+var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
+const img1 = (0, _pistatubaraoJpgDefault.default);
+const criarBrinquedo = ()=>{
+    const $brinquedo = `
+    <section class="container">
+   
+        <section class="row">
+          <h2>nome do brinquedo</h2>
+                <img class="col-sm-3 img-thumbnail bg-dark" src="${img1}"></img>
+                <section class="col align-items-center">
+                    <p class="col fs-4"> codigo do brinquedo</p> 
+                    <p class="col fs-1">Descri\xe7ao do brinquedo</p>
+                    <p class="col fs-3">R$</p>
+                </section>
+        </section>
+        <p>detalhes do brinquedo lorem nunsei oq nunsei oqla </p>
+    </section>
+    `;
+    const main = (0, _main.CreateMain)();
+    main.classList = "d-flex";
+    main.insertAdjacentHTML('beforeend', $brinquedo);
+};
+
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../media/pistatubarao.jpg":"eyp5S"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
 
 //# sourceMappingURL=index.a5535e9f.js.map
