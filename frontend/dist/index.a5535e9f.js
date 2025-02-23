@@ -604,6 +604,7 @@ var _adiministracao = require("./pages/adiministracao");
 var _brinquedo = require("./pages/Brinquedo");
 var _catalogo = require("./pages/catalogo");
 var _home = require("./pages/home");
+var _novoBrinquedo = require("./pages/novoBrinquedo");
 function renderByHashChange() {
     (0, _clearbody.ClearBody)();
     (0, _sidebar.SideBar)();
@@ -625,13 +626,16 @@ function renderByHashChange() {
         case '#brinquedo':
             (0, _brinquedo.criarBrinquedo)();
             break;
+        case '#toymaker':
+            (0, _novoBrinquedo.NewToyForm)();
+            break;
     }
 }
 renderByHashChange();
 window.addEventListener('hashchange', renderByHashChange);
 window.addEventListener("load", renderByHashChange);
 
-},{"./pages/home":"1VBCE","./functions/clearbody":"e1A7F","./components/sidebar":"2O7Kx","./pages/catalogo":"3q6Yq","./pages/adiministracao":"bkeon","./pages/about":"8zoV7","./components/header":"i9Hva","./pages/Brinquedo":"4PeLC"}],"1VBCE":[function(require,module,exports,__globalThis) {
+},{"./pages/home":"1VBCE","./functions/clearbody":"e1A7F","./components/sidebar":"2O7Kx","./pages/catalogo":"3q6Yq","./pages/adiministracao":"bkeon","./pages/about":"8zoV7","./components/header":"i9Hva","./pages/Brinquedo":"4PeLC","./pages/novoBrinquedo":"iIXVk"}],"1VBCE":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "homePage", ()=>homePage);
@@ -892,6 +896,12 @@ const adiministracao = ()=>{
             
         </tbody>
     </table>
+ 
+    <button id="MakeNewToy">
+        <a href="#toymaker"> 
+            Novo brinquedo
+        <a>
+     </button>
     `;
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex flex-col";
@@ -997,6 +1007,54 @@ const criarBrinquedo = ()=>{
     main.insertAdjacentHTML('beforeend', $brinquedo);
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../media/pistatubarao.jpg":"eyp5S"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
+},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIXVk":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "NewToyForm", ()=>NewToyForm);
+var _main = require("../components/main");
+const NewToyForm = ()=>{
+    const $toyform = `
+    
+    <form class="d-grid w-50 p-5">
+        <div class="form-group d-inline-flex">
+            <label class="text-start w-25" for="exampleInputEmail1">Codigo:</label>
+            <input type="email" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+        <div class="form-group d-inline-flex">
+            <label class="text-start w-25" for="exampleInputPassword1">descri\xe7ao</label>
+            <input type="text" class="form-control  w-100" id="exampleInputPassword1" >
+        </div>
+         <div class="form-group d-inline-flex">
+            <label class="text-start w-25" for="exampleInputEmail1">CATEGORIA:</label>
+            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+         <div class="form-group d-inline-flex">
+            <label class="text-start w-25" for="exampleInputEmail1">MARCA</label>
+            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+         <div class="form-group d-inline-flex">
+            <label class="text-start w-25" for="exampleInputEmail1">IMAGEM</label>
+            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            
+         </div>
+         <div class="form-group d-inline-flex">
+            <label class="text-start w-25" for="exampleInputEmail1">VALOR</label>
+            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+         <div class="form-group d-inline-flex">
+            <label class="text-start w-25" for="exampleInputEmail1">DETALHES</label>
+            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    `;
+    const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col";
+    main.insertAdjacentHTML("beforeend", $toyform);
+};
+
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
 
 //# sourceMappingURL=index.a5535e9f.js.map

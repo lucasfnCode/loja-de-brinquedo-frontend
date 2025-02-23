@@ -27,6 +27,12 @@ export const adiministracao = ()=>{
             
         </tbody>
     </table>
+ 
+    <button id="MakeNewToy">
+        <a href="#toymaker"> 
+            Novo brinquedo
+        <a>
+     </button>
     `
     const main = CreateMain()
      main.classList = "d-flex flex-col"

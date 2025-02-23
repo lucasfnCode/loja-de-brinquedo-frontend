@@ -6,6 +6,7 @@ import { adiministracao } from "./pages/adiministracao";
 import { criarBrinquedo } from "./pages/Brinquedo";
 import { criarCatalogo } from "./pages/catalogo";
 import { homePage } from "./pages/home";
+import { NewToyForm } from "./pages/novoBrinquedo";
 
 function renderByHashChange(){
     
@@ -31,6 +32,9 @@ function renderByHashChange(){
         case '#brinquedo':
             criarBrinquedo();
             break;
+        case '#toymaker':
+            NewToyForm();
+            break
     }   
     
 }
