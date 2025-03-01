@@ -2,7 +2,9 @@ import { CreateMain } from "./main"
 
 export const SideBar=()=>{
     const $sidebar =`
-    <section class="sidebar me-5 ms-2 id="sidebar">
+    
+    
+    <section class="sidebar me-5 ms-2 d-none d-sm-block" id="sidebar">
         <h1>menu principal</h1>
         <nav>
             <ul class="navbar-nav">
@@ -30,6 +32,8 @@ export const SideBar=()=>{
             </ul>
         </nav>
     </section>
+
+   
     `
     const main = CreateMain();
     main.insertAdjacentHTML('afterbegin',$sidebar)

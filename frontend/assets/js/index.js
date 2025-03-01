@@ -12,7 +12,7 @@ function renderByHashChange(){
     
     ClearBody();
    
-  
+    
     SideBar();
     switch(location.hash){
         case '':
@@ -36,9 +36,9 @@ function renderByHashChange(){
             NewToyForm();
             break
     }   
-    
+  
 }
-
+createHeader();
 
 renderByHashChange()
 

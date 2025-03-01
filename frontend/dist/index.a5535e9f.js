@@ -631,71 +631,24 @@ function renderByHashChange() {
             break;
     }
 }
+(0, _header.createHeader)();
 renderByHashChange();
 window.addEventListener('hashchange', renderByHashChange);
 window.addEventListener("load", renderByHashChange);
 
-},{"./pages/home":"1VBCE","./functions/clearbody":"e1A7F","./components/sidebar":"2O7Kx","./pages/catalogo":"3q6Yq","./pages/adiministracao":"bkeon","./pages/about":"8zoV7","./components/header":"i9Hva","./pages/Brinquedo":"4PeLC","./pages/novoBrinquedo":"iIXVk"}],"1VBCE":[function(require,module,exports,__globalThis) {
+},{"./components/header":"i9Hva","./components/sidebar":"2O7Kx","./functions/clearbody":"e1A7F","./pages/about":"8zoV7","./pages/adiministracao":"bkeon","./pages/Brinquedo":"4PeLC","./pages/catalogo":"3q6Yq","./pages/home":"1VBCE","./pages/novoBrinquedo":"iIXVk"}],"i9Hva":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "homePage", ()=>homePage);
-var _main = require("../components/main");
-var _pistatubaraoJpg = require("../../media/pistatubarao.jpg");
-var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
-var _ben10PikaJpg = require("../../media/ben10pika.jpg");
-var _ben10PikaJpgDefault = parcelHelpers.interopDefault(_ben10PikaJpg);
-var _jaboloJpg = require("../../media/jabolo.jpg");
-var _jaboloJpgDefault = parcelHelpers.interopDefault(_jaboloJpg);
-const img3 = (0, _jaboloJpgDefault.default);
-const img2 = (0, _ben10PikaJpgDefault.default);
-const img1 = (0, _pistatubaraoJpgDefault.default);
-const homePage = ()=>{
-    const $homeHTML = `
-    
-        <section class="p-2 d-grid">
-            <h2>Brinquedos em destaque</h2>
-            <ul class="row p-0 m-0 text-center">
-                <li class="list-group-item col m-3">
-                    <a href="#brinquedo">
-                        <img src="${img1}" alt="brinquedo1" >
-                        <p" class="d-block ">dedscri\xe7ao</p>
-                        <p>pre\xe7o</p>
-                    </a>
-                </li>
-                <li class="list-group-item col m-3">
-                    <img src="${img2}" alt="brinquedo1">
-                    <p" class="d-block ">descri\xe7ao</p>
-                    <p>pre\xe7o</p>
-                </li>
-                <li class="list-group-item col m-3">
-                    <img src="${img3}" alt="brinquedo1">
-                    <p" class="d-block ">descri\xe7ao</p>
-                    <p>pre\xe7o</p>
-                </li>
-            </ul>
-        </section>
-    `;
-    const main = (0, _main.CreateMain)();
-    main.classList = "d-flex flex-col";
-    main.insertAdjacentHTML('beforeend', $homeHTML);
-};
-
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../media/pistatubarao.jpg":"eyp5S","../../media/ben10pika.jpg":"agZqH","../../media/jabolo.jpg":"3Vtic"}],"gfq3l":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "CreateMain", ()=>CreateMain);
-const CreateMain = ()=>{
-    let main = document.getElementById('main');
-    if (!main) {
-        main = document.createElement('main');
-        main.id = 'main';
-        const header = document.getElementsByTagName('header')[0];
-        if (header) header.insertAdjacentElement('afterend', main);
-        const footer = document.getElementsByTagName('footer')[0];
-        if (footer) footer.insertAdjacentElement('beforebegin', main);
-        else document.body.appendChild(main);
-    }
-    return main;
+parcelHelpers.export(exports, "createHeader", ()=>createHeader);
+const createHeader = ()=>{
+    const $header = `
+            <img src="" alt="logo">
+            <h1>Nome da loja de Brinquedo</h1>
+            `;
+    const header = document.createElement('header');
+    header.classList = 'bg-warning';
+    header.insertAdjacentHTML('afterbegin', $header);
+    document.body.insertAdjacentElement('afterbegin', header);
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports,__globalThis) {
@@ -728,72 +681,16 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"eyp5S":[function(require,module,exports,__globalThis) {
-module.exports = require("f896fc228d1f03ef").getBundleURL('cOZeh') + "pistatubarao.a1425f1f.jpg" + "?" + Date.now();
-
-},{"f896fc228d1f03ef":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return '/';
-}
-function getBaseURL(url) {
-    return ('' + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ('' + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error('Origin not found');
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"agZqH":[function(require,module,exports,__globalThis) {
-module.exports = require("f06e5b22190ecc45").getBundleURL('cOZeh') + "ben10pika.8685591c.jpg" + "?" + Date.now();
-
-},{"f06e5b22190ecc45":"lgJ39"}],"3Vtic":[function(require,module,exports,__globalThis) {
-module.exports = require("9630b1f20b46c6d0").getBundleURL('cOZeh') + "jabolo.2d65496e.jpg" + "?" + Date.now();
-
-},{"9630b1f20b46c6d0":"lgJ39"}],"e1A7F":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ClearBody", ()=>ClearBody);
-function ClearBody() {
-    const $main = document.querySelector('main');
-    if ($main) {
-        $main.innerHTML = '';
-        $main.classList = '';
-        const body = document.querySelector('body');
-    // body[0].classList= null;
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2O7Kx":[function(require,module,exports,__globalThis) {
+},{}],"2O7Kx":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "SideBar", ()=>SideBar);
 var _main = require("./main");
 const SideBar = ()=>{
     const $sidebar = `
-    <section class="sidebar me-5 ms-2 id="sidebar">
+    
+    
+    <section class="sidebar me-5 ms-2 d-none d-sm-block" id="sidebar">
         <h1>menu principal</h1>
         <nav>
             <ul class="navbar-nav">
@@ -821,94 +718,46 @@ const SideBar = ()=>{
             </ul>
         </nav>
     </section>
+
+   
     `;
     const main = (0, _main.CreateMain)();
     main.insertAdjacentHTML('afterbegin', $sidebar);
 };
 
-},{"./main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3q6Yq":[function(require,module,exports,__globalThis) {
+},{"./main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gfq3l":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// quando uma categoria é selecionada leva para uma vitrine so com brinquedos daquela categoria
-// eu ate podia fazer isso agr, mas slc 1:18 da am, ja to chamando jessus de jenesio, peguiça
-// vou fazer os html funcionar vcs q se virem depois
-parcelHelpers.export(exports, "criarCatalogo", ()=>criarCatalogo);
-var _main = require("../components/main");
-function criarCatalogo() {
-    const $catalogo = `
-        <section class="p-2">
-            <h2>
-                brinquedos em destaque
-            </h2>
-             <ul class="d-flex p-0 m-0">
-                <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
-                    <p>pre\xe7o</p>
-                </li>
-                <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
-                    <p>pre\xe7o</p>
-                </li>
-                <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
-                    <p>pre\xe7o</p>
-                </li>
-            </ul>
-        </section>
-    `;
-    const main = (0, _main.CreateMain)();
-    main.classList = "d-flex flex-col";
-    main.insertAdjacentHTML("beforeend", $catalogo);
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/main":"gfq3l"}],"bkeon":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "adiministracao", ()=>adiministracao);
-var _main = require("../components/main");
-const adiministracao = ()=>{
-    const $adm = `
-    <table class="table table-striped w-75 my-3">
-        <thead>
-            <tr>
-            <th scope="col">Descri\xe7ao</th>
-            <th scope="col">categoria</th>
-            <th scope="col">valor</th>
-            <th scope="col">contoles</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>descri\xe7ao de brinquedo</td>
-                <td>categoria 1 </td>
-                <td>72,90</td>
-                <td>sim nao</td>
-            </tr>
-            <tr>
-                <td>dminha pommba</td>
-                <td>categoria 8cm </td>
-                <td>3,80</td>
-                <td>sim</td>
-            </tr>
-            
-        </tbody>
-    </table>
- 
-    <button id="MakeNewToy">
-        <a href="#toymaker"> 
-            Novo brinquedo
-        <a>
-     </button>
-    `;
-    const main = (0, _main.CreateMain)();
-    main.classList = "d-flex flex-col";
-    main.insertAdjacentHTML("beforeend", $adm);
+parcelHelpers.export(exports, "CreateMain", ()=>CreateMain);
+const CreateMain = ()=>{
+    let main = document.getElementById('main');
+    if (!main) {
+        main = document.createElement('main');
+        main.id = 'main';
+        const header = document.getElementsByTagName('header')[0];
+        if (header) header.insertAdjacentElement('afterend', main);
+        const footer = document.getElementsByTagName('footer')[0];
+        if (footer) footer.insertAdjacentElement('beforebegin', main);
+        else document.body.appendChild(main);
+    }
+    return main;
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8zoV7":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e1A7F":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ClearBody", ()=>ClearBody);
+function ClearBody() {
+    const $main = document.querySelector('main');
+    if ($main) {
+        $main.innerHTML = '';
+        $main.classList = '';
+        const body = document.querySelector('body');
+    // body[0].classList= null;
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8zoV7":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "aboutUs", ()=>aboutUs);
@@ -962,23 +811,51 @@ const aboutUs = ()=>{
  // instalando se vc ta lendo isso vc ta muito desocupado
 ;
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i9Hva":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bkeon":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "createHeader", ()=>createHeader);
-var _main = require("./main");
-const createHeader = ()=>{
-    const header = document.createElement('header');
-    header.innerHTML = $header;
-    const $header = `
-            <img src="" alt="logo">
-            <h1>Nome da loja de Brinquedo</h1>
+parcelHelpers.export(exports, "adiministracao", ()=>adiministracao);
+var _main = require("../components/main");
+const adiministracao = ()=>{
+    const $adm = `
+    <table class="table table-striped w-75 my-3">
+        <thead>
+            <tr>
+            <th scope="col">Descri\xe7ao</th>
+            <th scope="col">categoria</th>
+            <th scope="col">valor</th>
+            <th scope="col">contoles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>descri\xe7ao de brinquedo</td>
+                <td>categoria 1 </td>
+                <td>72,90</td>
+                <td>sim nao</td>
+            </tr>
+            <tr>
+                <td>dminha pommba</td>
+                <td>categoria 8cm </td>
+                <td>3,80</td>
+                <td>sim</td>
+            </tr>
+            
+        </tbody>
+    </table>
+ 
+    <button id="MakeNewToy">
+        <a href="#toymaker"> 
+            Novo brinquedo
+        <a>
+     </button>
     `;
-    header.classList = "w-100 d-flex";
-    document.body.insertAdjacentElement('afterbegin', header);
+    const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col";
+    main.insertAdjacentHTML("beforeend", $adm);
 };
 
-},{"./main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4PeLC":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4PeLC":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "criarBrinquedo", ()=>criarBrinquedo);
@@ -1007,7 +884,135 @@ const criarBrinquedo = ()=>{
     main.insertAdjacentHTML('beforeend', $brinquedo);
 };
 
-},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIXVk":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eyp5S":[function(require,module,exports,__globalThis) {
+module.exports = require("f896fc228d1f03ef").getBundleURL('cOZeh') + "pistatubarao.a1425f1f.jpg" + "?" + Date.now();
+
+},{"f896fc228d1f03ef":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ('' + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"3q6Yq":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+// quando uma categoria é selecionada leva para uma vitrine so com brinquedos daquela categoria
+// eu ate podia fazer isso agr, mas slc 1:18 da am, ja to chamando jessus de jenesio, peguiça
+// vou fazer os html funcionar vcs q se virem depois
+parcelHelpers.export(exports, "criarCatalogo", ()=>criarCatalogo);
+var _main = require("../components/main");
+function criarCatalogo() {
+    const $catalogo = `
+        <section class="p-2">
+            <h2>
+                brinquedos em destaque
+            </h2>
+             <ul class="d-flex p-0 m-0">
+                <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">descri\xe7ao</label>
+                    <p>pre\xe7o</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">descri\xe7ao</label>
+                    <p>pre\xe7o</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="" alt="brinquedo1">
+                    <label for="brinquedo1">descri\xe7ao</label>
+                    <p>pre\xe7o</p>
+                </li>
+            </ul>
+        </section>
+    `;
+    const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col";
+    main.insertAdjacentHTML("beforeend", $catalogo);
+}
+
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1VBCE":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "homePage", ()=>homePage);
+var _main = require("../components/main");
+var _pistatubaraoJpg = require("../../media/pistatubarao.jpg");
+var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
+var _ben10PikaJpg = require("../../media/ben10pika.jpg");
+var _ben10PikaJpgDefault = parcelHelpers.interopDefault(_ben10PikaJpg);
+var _jaboloJpg = require("../../media/jabolo.jpg");
+var _jaboloJpgDefault = parcelHelpers.interopDefault(_jaboloJpg);
+const img3 = (0, _jaboloJpgDefault.default);
+const img2 = (0, _ben10PikaJpgDefault.default);
+const img1 = (0, _pistatubaraoJpgDefault.default);
+const homePage = ()=>{
+    const $homeHTML = `
+    
+    
+        <section class="p-2 d-grid">
+            <h2>Brinquedos em destaque</h2>
+            <ul class="row p-0 m-0 text-center">
+                <li class="list-group-item col m-3">
+                    <a href="#brinquedo">
+                        <img src="${img1}" alt="brinquedo1" >
+                        <p" class="d-block ">dedscri\xe7ao</p>
+                        <p>pre\xe7o</p>
+                    </a>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="${img2}" alt="brinquedo1">
+                    <p" class="d-block ">descri\xe7ao</p>
+                    <p>pre\xe7o</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descri\xe7ao</p>
+                    <p>pre\xe7o</p>
+                </li>
+            </ul>
+        </section>
+    `;
+    const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col";
+    main.insertAdjacentHTML('beforeend', $homeHTML);
+};
+
+},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","../../media/ben10pika.jpg":"agZqH","../../media/jabolo.jpg":"3Vtic","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"agZqH":[function(require,module,exports,__globalThis) {
+module.exports = require("f06e5b22190ecc45").getBundleURL('cOZeh') + "ben10pika.8685591c.jpg" + "?" + Date.now();
+
+},{"f06e5b22190ecc45":"lgJ39"}],"3Vtic":[function(require,module,exports,__globalThis) {
+module.exports = require("9630b1f20b46c6d0").getBundleURL('cOZeh') + "jabolo.2d65496e.jpg" + "?" + Date.now();
+
+},{"9630b1f20b46c6d0":"lgJ39"}],"iIXVk":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "NewToyForm", ()=>NewToyForm);
@@ -1015,35 +1020,35 @@ var _main = require("../components/main");
 const NewToyForm = ()=>{
     const $toyform = `
     
-    <form class="d-grid w-50 p-5">
-        <div class="form-group d-inline-flex">
-            <label class="text-start w-25" for="exampleInputEmail1">Codigo:</label>
-            <input type="email" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+    <form class="d-grid w-100 p-5">
+        <div class="form-group d-flex justify-content-between">
+            <label class="text-start w-50 w-sm-25 " for="exampleInputEmail1">Codigo:</label>
+            <input type="email" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
         <div class="form-group d-inline-flex">
-            <label class="text-start w-25" for="exampleInputPassword1">descri\xe7ao</label>
-            <input type="text" class="form-control  w-100" id="exampleInputPassword1" >
+            <label class="text-start w-50 w-sm-25" for="exampleInputPassword1">descri\xe7ao</label>
+            <input type="text" class="form-control " id="exampleInputPassword1" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-25" for="exampleInputEmail1">CATEGORIA:</label>
-            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">CATEGORIA:</label>
+            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-25" for="exampleInputEmail1">MARCA</label>
-            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">MARCA</label>
+            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-25" for="exampleInputEmail1">IMAGEM</label>
-            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">IMAGEM</label>
+            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
             
          </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-25" for="exampleInputEmail1">VALOR</label>
-            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">VALOR</label>
+            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-25" for="exampleInputEmail1">DETALHES</label>
-            <input type="text" class="form-control  w-100 " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">DETALHES</label>
+            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
 
 

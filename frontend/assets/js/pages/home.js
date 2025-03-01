@@ -11,6 +11,7 @@ const img1 = placeholder;
 export const homePage=()=>{
     const $homeHTML=`
     
+    
         <section class="p-2 d-grid">
             <h2>Brinquedos em destaque</h2>
             <ul class="row p-0 m-0 text-center">
