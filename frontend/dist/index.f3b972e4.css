@@ -32,4 +32,22 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+:root {
+  --clr-yellow-4: #faff00;
+  --clr-yellow-3: #fcff37;
+  --clr-yellow-2: #fdff6e;
+  --clr-yellow-1: #feffa4;
+  --clr-yellow-0: #ffffdb;
+  --clr-headerbg: #faca2a;
+}
+
+main {
+  height: 100vh;
+  background-color: var(--clr-yellow-0) !important;
+}
+
+.sidebar {
+  background-color: var(--clr-headerbg) !important;
+}
 /*# sourceMappingURL=index.f3b972e4.css.map */

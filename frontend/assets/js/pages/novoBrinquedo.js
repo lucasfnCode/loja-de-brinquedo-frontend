@@ -39,6 +39,6 @@ export const NewToyForm = () =>{
     </form>
     `
     const main = CreateMain()
-     main.classList = "d-flex flex-col"
+     main.classList = "d-flex h-100"
     main.insertAdjacentHTML("beforeend",$toyform);
 }

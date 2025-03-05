@@ -12,7 +12,7 @@ export const homePage=()=>{
     const $homeHTML=`
     
     
-        <section class="p-2 d-grid">
+        <section class="p-2 d-flex-inline">
             <h2>Brinquedos em destaque</h2>
             <ul class="row p-0 m-0 text-center">
                 <li class="list-group-item col m-3">
@@ -32,11 +32,50 @@ export const homePage=()=>{
                     <p" class="d-block ">descriçao</p>
                     <p>preço</p>
                 </li>
+                <li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li>
+                <li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li><li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li><li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li><li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li><li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li><li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li><li class="list-group-item col m-3">
+                    <img src="${img3}" alt="brinquedo1">
+                    <p" class="d-block ">descriçao</p>
+                    <p>preço</p>
+                </li>
             </ul>
         </section>
     `
     const main = CreateMain();
-    main.classList = "d-flex flex-col"
+    main.classList = "d-flex  h-100"
     main.insertAdjacentHTML('beforeend',$homeHTML);
 
 }
