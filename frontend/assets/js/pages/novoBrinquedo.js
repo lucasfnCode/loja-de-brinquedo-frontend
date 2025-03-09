@@ -9,34 +9,36 @@ export const NewToyForm = () =>{
             <input type="email" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
         <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputPassword1">descriçao</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputPassword1">Descrição:</label>
             <input type="text" class="form-control " id="exampleInputPassword1" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">CATEGORIA:</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Categoria:</label>
             <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">MARCA</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Marca:</label>
             <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
-         <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">IMAGEM</label>
-            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
-            
+
+         <div class="form-group d-inline-flex ">
+            <label for="formFileSm" class="form-label">Imagem</label>
+            <input class="form-control" type="file" id="formFileSm">
          </div>
+
          <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">VALOR</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Valor:</label>
             <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">DETALHES</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Detalhes:</label>
             <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
 
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        <div class="d-flex justify-content-center mt-3">
+        <button type="submit" class="btn btn-success w-50">Salvar Dados</button>
+        </div>
+        </form>
     `
     const main = CreateMain()
      main.classList = "d-flex flex-col"

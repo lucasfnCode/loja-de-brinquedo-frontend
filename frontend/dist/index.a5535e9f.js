@@ -819,42 +819,42 @@ parcelHelpers.export(exports, "adiministracao", ()=>adiministracao);
 var _main = require("../components/main");
 const adiministracao = ()=>{
     const $adm = `
-<section>
-    <table class="table table-striped table-bordered table-hover w-100 m-3">
-        <thead class="table-warning">
-            <tr>
-            <th scope="col">Descri\xe7ao</th>
-            <th scope="col">categoria</th>
-            <th scope="col">valor</th>
-            <th scope="col">contoles</th>
-            </tr>
-        </thead>
+        <section>
+            <table class="table table-striped table-bordered table-hover w-100 m-3">
+                <thead class="table-warning">
+                    <tr>
+                    <th scope="col">Descri\xe7ao</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Quantidade</th>
+                    </tr>
+                </thead>
 
-        <tbody class="table-group-divider">
-            <tr>
-                <td>descri\xe7ao de brinquedo</td>
-                <td>categoria 1 </td>
-                <td>72,90</td>
-                <td>sim nao</td>
-            </tr>
-            <tr>
-                <td>dminha pommba</td>
-                <td>categoria 8cm </td>
-                <td>3,80</td>
-                <td>sim</td>
-            </tr>
-            
-        </tbody>
-    </table>
-    </section>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <td>descri\xe7ao de brinquedo</td>
+                        <td>categoria 1 </td>
+                        <td>72,90</td>
+                        <td>10</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>dminha pommba</td>
+                        <td>categoria 8cm </td>
+                        <td>3,80</td>
+                        <td>8cm</td>
+                    </tr>            
+                </tbody>
+            </table>
+        </section>
 
-    <aside class="p-5">
-       <button class="btn btn-success" id="MakeNewToy">
-           <a class="btn" href="#toymaker" role="button"> 
-               Novo brinquedo
-           <a>
-        </button>
-   </aside>     
+        <aside class="p-5">
+            <button type="button" class="btn btn-success" id="MakeNewToy">
+                <a class="btn" href="#toymaker" role="button"> 
+                    Novo Brinquedo
+                <a>
+            </button>
+        </aside>     
     `;
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex flex-col";
@@ -1035,34 +1035,36 @@ const NewToyForm = ()=>{
             <input type="email" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
         <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputPassword1">descri\xe7ao</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputPassword1">Descri\xe7\xe3o:</label>
             <input type="text" class="form-control " id="exampleInputPassword1" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">CATEGORIA:</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Categoria:</label>
             <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">MARCA</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Marca:</label>
             <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
-         <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">IMAGEM</label>
-            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
-            
+
+         <div class="form-group d-inline-flex ">
+            <label for="formFileSm" class="form-label">Imagem</label>
+            <input class="form-control" type="file" id="formFileSm">
          </div>
+
          <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">VALOR</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Valor:</label>
             <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
          <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">DETALHES</label>
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Detalhes:</label>
             <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
 
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        <div class="d-flex justify-content-center mt-3">
+        <button type="submit" class="btn btn-success w-50">Salvar Dados</button>
+        </div>
+        </form>
     `;
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex flex-col";
