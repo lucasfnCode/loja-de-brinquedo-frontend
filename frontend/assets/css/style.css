@@ -42,3 +42,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+header{
+	display: flex;
+}
+/* .sidebar{
+	background-color: yellow;
+} */

@@ -4,34 +4,34 @@ export const SideBar=()=>{
     const $sidebar =`
     
     
-    <section class="sidebar me-5 ms-2 d-none d-sm-block" id="sidebar">
-        <h1>menu principal</h1>
-        <nav>
-            <ul class="navbar-nav">
-                <li class="list-group-item">
-                    <a href="#home">
-                        home
+<section class="sidebar d-none d-sm-block bg-warning vh-100" id="sidebar" style="width: 175px; position: fixed; left: 0;"> 
+    <nav>
+        <h1>Menu</h1>
+            
+                <div class ="list-group">
+                    <a href="#home" class="list-group-item list-group-item-warning list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" aria-controls="list-home">
+                        Home
                     </a>
-                </li>
-                <li>
-                    <a href="#catalogo">
-                        catálogo de brinquedos
+                                         
+                    <a href="#catalogo" class="list-group-item list-group-item-warning list-group-item-action" id="list-catalogo-list" data-bs-toggle="list" href="#list-catalogo" aria-controls="list-catalogo">
+                        Catálogo de Brinquedos
                     </a>
-                </li>
-                <li>
-                    <a href="#adhemin">
-                        adiministração
+                        
+
+                        
+                    <a href="#adhemin" class="list-group-item list-group-item-warning list-group-item-action" id="list-admin-list" data-bs-toggle="list" href="#list-admin" aria-controls="list-admin">
+                        Administração
                     </a>    
-                </li>
+                        
                     
-                <li>
-                    <a href="#about">
-                        sobre a equipe
+                        
+                    <a href="#about" class="list-group-item list-group-item-warning list-group-item-action" id="list-sobre-list" data-bs-toggle="list" href="#list-sobre" aria-controls="list-sobre">
+                        Sobre a Equipe
                     </a>
-                </li>
-            </ul>
-        </nav>
-    </section>
+                </div>
+            
+    </nav>
+</section>
 
    
     `

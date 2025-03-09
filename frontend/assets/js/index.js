@@ -41,6 +41,5 @@ function renderByHashChange(){
 createHeader();
 
 renderByHashChange()
-
 window.addEventListener('hashchange',renderByHashChange);
 window.addEventListener("load",renderByHashChange);

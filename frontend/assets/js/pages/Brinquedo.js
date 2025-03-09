@@ -5,18 +5,21 @@ const img1 = placeholder;
 export const criarBrinquedo=()=>{
 
     const $brinquedo = `
-    <section class="container">
+    <section class="container p-2">
    
         <section class="row">
-          <h2>nome do brinquedo</h2>
-                <img class="col-sm-3 img-thumbnail bg-dark" src="${img1}"></img>
+          <h2>Nome do Brinquedo</h2>
+                <img class="col-sm-3 ms-3 img-thumbnail bg-dark" src="${img1}"></img>
                 <section class="col align-items-center">
-                    <p class="col fs-4"> codigo do brinquedo</p> 
-                    <p class="col fs-1">Descriçao do brinquedo</p>
+                    <p class="col fs-4"> Código do Brinquedo</p> 
+                    <p class="col fs-1">Descrição do Brinquedo</p>
                     <p class="col fs-3">R$</p>
                 </section>
+
+                <h2 class="pt-1 fs-1">Detalhes do Produto</h2>
+                    <p> 
+                        Esse brinquedo blabla é legal e tal, brinca ai e pá
         </section>
-        <p>detalhes do brinquedo lorem nunsei oq nunsei oqla </p>
     </section>
     `
     const main = CreateMain()

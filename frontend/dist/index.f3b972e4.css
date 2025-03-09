@@ -32,4 +32,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+header {
+  display: flex;
+}
 /*# sourceMappingURL=index.f3b972e4.css.map */

@@ -3,7 +3,7 @@ import { CreateMain } from "../components/main"
 export const aboutUs =()=>{
     const $about=`
     <section class="d-inline p-2">
-            <h2 class="w-100"> Sobre a Equipe </h2>
+            <h2> Sobre a Equipe </h2>
 
           <ul class="d-inline-flex row p-0 m-0">
           

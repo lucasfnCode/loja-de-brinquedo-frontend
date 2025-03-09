@@ -642,8 +642,8 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createHeader", ()=>createHeader);
 const createHeader = ()=>{
     const $header = `
-            <img src="" alt="logo">
-            <h1>Nome da loja de Brinquedo</h1>
+            <img src="https://placehold.co/175x100" alt="logo">
+            <h1 class="ms-1">Nome da loja de Brinquedo</h1>
             `;
     const header = document.createElement('header');
     header.classList = 'bg-warning';
@@ -690,34 +690,34 @@ const SideBar = ()=>{
     const $sidebar = `
     
     
-    <section class="sidebar me-5 ms-2 d-none d-sm-block" id="sidebar">
-        <h1>menu principal</h1>
-        <nav>
-            <ul class="navbar-nav">
-                <li class="list-group-item">
-                    <a href="#home">
-                        home
+<section class="sidebar d-none d-sm-block bg-warning vh-100" id="sidebar" style="width: 175px; position: fixed; left: 0;"> 
+    <nav>
+        <h1>Menu</h1>
+            
+                <div class ="list-group">
+                    <a href="#home" class="list-group-item list-group-item-warning list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" aria-controls="list-home">
+                        Home
                     </a>
-                </li>
-                <li>
-                    <a href="#catalogo">
-                        cat\xe1logo de brinquedos
+                                         
+                    <a href="#catalogo" class="list-group-item list-group-item-warning list-group-item-action" id="list-catalogo-list" data-bs-toggle="list" href="#list-catalogo" aria-controls="list-catalogo">
+                        Cat\xe1logo de Brinquedos
                     </a>
-                </li>
-                <li>
-                    <a href="#adhemin">
-                        adiministra\xe7\xe3o
+                        
+
+                        
+                    <a href="#adhemin" class="list-group-item list-group-item-warning list-group-item-action" id="list-admin-list" data-bs-toggle="list" href="#list-admin" aria-controls="list-admin">
+                        Administra\xe7\xe3o
                     </a>    
-                </li>
+                        
                     
-                <li>
-                    <a href="#about">
-                        sobre a equipe
+                        
+                    <a href="#about" class="list-group-item list-group-item-warning list-group-item-action" id="list-sobre-list" data-bs-toggle="list" href="#list-sobre" aria-controls="list-sobre">
+                        Sobre a Equipe
                     </a>
-                </li>
-            </ul>
-        </nav>
-    </section>
+                </div>
+            
+    </nav>
+</section>
 
    
     `;
@@ -734,6 +734,7 @@ const CreateMain = ()=>{
     if (!main) {
         main = document.createElement('main');
         main.id = 'main';
+        main.style.marginLeft = "175px"; // Coloquei uma margin do tamanho da sidebar pra main começar a partir dela e o conteúdo ficar alinhado, gambiarra (Y)
         const header = document.getElementsByTagName('header')[0];
         if (header) header.insertAdjacentElement('afterend', main);
         const footer = document.getElementsByTagName('footer')[0];
@@ -765,7 +766,7 @@ var _main = require("../components/main");
 const aboutUs = ()=>{
     const $about = `
     <section class="d-inline p-2">
-            <h2 class="w-100"> Sobre a Equipe </h2>
+            <h2> Sobre a Equipe </h2>
 
           <ul class="d-inline-flex row p-0 m-0">
           
@@ -818,8 +819,9 @@ parcelHelpers.export(exports, "adiministracao", ()=>adiministracao);
 var _main = require("../components/main");
 const adiministracao = ()=>{
     const $adm = `
-    <table class="table table-striped w-75 my-3">
-        <thead>
+<section>
+    <table class="table table-striped table-bordered table-hover w-100 m-3">
+        <thead class="table-warning">
             <tr>
             <th scope="col">Descri\xe7ao</th>
             <th scope="col">categoria</th>
@@ -827,7 +829,8 @@ const adiministracao = ()=>{
             <th scope="col">contoles</th>
             </tr>
         </thead>
-        <tbody>
+
+        <tbody class="table-group-divider">
             <tr>
                 <td>descri\xe7ao de brinquedo</td>
                 <td>categoria 1 </td>
@@ -843,12 +846,15 @@ const adiministracao = ()=>{
             
         </tbody>
     </table>
- 
-    <button id="MakeNewToy">
-        <a href="#toymaker"> 
-            Novo brinquedo
-        <a>
-     </button>
+    </section>
+
+    <aside class="p-5">
+       <button class="btn btn-success" id="MakeNewToy">
+           <a class="btn" href="#toymaker" role="button"> 
+               Novo brinquedo
+           <a>
+        </button>
+   </aside>     
     `;
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex flex-col";
@@ -865,18 +871,21 @@ var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
 const img1 = (0, _pistatubaraoJpgDefault.default);
 const criarBrinquedo = ()=>{
     const $brinquedo = `
-    <section class="container">
+    <section class="container p-2">
    
         <section class="row">
-          <h2>nome do brinquedo</h2>
-                <img class="col-sm-3 img-thumbnail bg-dark" src="${img1}"></img>
+          <h2>Nome do Brinquedo</h2>
+                <img class="col-sm-3 ms-3 img-thumbnail bg-dark" src="${img1}"></img>
                 <section class="col align-items-center">
-                    <p class="col fs-4"> codigo do brinquedo</p> 
-                    <p class="col fs-1">Descri\xe7ao do brinquedo</p>
+                    <p class="col fs-4"> C\xf3digo do Brinquedo</p> 
+                    <p class="col fs-1">Descri\xe7\xe3o do Brinquedo</p>
                     <p class="col fs-3">R$</p>
                 </section>
+
+                <h2 class="pt-1 fs-1">Detalhes do Produto</h2>
+                    <p> 
+                        Esse brinquedo blabla \xe9 legal e tal, brinca ai e p\xe1
         </section>
-        <p>detalhes do brinquedo lorem nunsei oq nunsei oqla </p>
     </section>
     `;
     const main = (0, _main.CreateMain)();
@@ -934,7 +943,7 @@ function criarCatalogo() {
     const $catalogo = `
         <section class="p-2">
             <h2>
-                brinquedos em destaque
+                Brinquedos em Destaque
             </h2>
              <ul class="d-flex p-0 m-0">
                 <li class="list-group-item col m-3">

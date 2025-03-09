@@ -2,8 +2,9 @@ import { CreateMain } from "../components/main"
 
 export const adiministracao = ()=>{
     const $adm =`
-    <table class="table table-striped w-75 my-3">
-        <thead>
+<section>
+    <table class="table table-striped table-bordered table-hover w-100 m-3">
+        <thead class="table-warning">
             <tr>
             <th scope="col">Descriçao</th>
             <th scope="col">categoria</th>
@@ -11,7 +12,8 @@ export const adiministracao = ()=>{
             <th scope="col">contoles</th>
             </tr>
         </thead>
-        <tbody>
+
+        <tbody class="table-group-divider">
             <tr>
                 <td>descriçao de brinquedo</td>
                 <td>categoria 1 </td>
@@ -27,12 +29,15 @@ export const adiministracao = ()=>{
             
         </tbody>
     </table>
- 
-    <button id="MakeNewToy">
-        <a href="#toymaker"> 
-            Novo brinquedo
-        <a>
-     </button>
+    </section>
+
+    <aside class="p-5">
+       <button class="btn btn-success" id="MakeNewToy">
+           <a class="btn" href="#toymaker" role="button"> 
+               Novo brinquedo
+           <a>
+        </button>
+   </aside>     
     `
     const main = CreateMain()
      main.classList = "d-flex flex-col"

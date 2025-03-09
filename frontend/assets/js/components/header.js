@@ -2,8 +2,8 @@
 export const createHeader =()=>{
   
     const $header = `
-            <img src="" alt="logo">
-            <h1>Nome da loja de Brinquedo</h1>
+            <img src="https://placehold.co/175x100" alt="logo">
+            <h1 class="ms-1">Nome da loja de Brinquedo</h1>
             `
     
     const header = document.createElement('header')

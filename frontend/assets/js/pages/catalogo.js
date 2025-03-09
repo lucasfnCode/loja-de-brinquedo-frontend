@@ -6,7 +6,7 @@ export function criarCatalogo (){
     const $catalogo = `
         <section class="p-2">
             <h2>
-                brinquedos em destaque
+                Brinquedos em Destaque
             </h2>
              <ul class="d-flex p-0 m-0">
                 <li class="list-group-item col m-3">
