@@ -1028,49 +1028,49 @@ parcelHelpers.export(exports, "NewToyForm", ()=>NewToyForm);
 var _main = require("../components/main");
 const NewToyForm = ()=>{
     const $toyform = `
-    
-    <form class="d-grid w-100 p-5">
+    <form class="d-grid w-100 gap-1 p-5">
         <div class="form-group d-flex justify-content-between">
-            <label class="text-start w-50 w-sm-25 " for="exampleInputEmail1">Codigo:</label>
-            <input type="email" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Codigo:</label>
+            <input type="email" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="form-group d-inline-flex">
             <label class="text-start w-50 w-sm-25" for="exampleInputPassword1">Descri\xe7\xe3o:</label>
-            <input type="text" class="form-control " id="exampleInputPassword1" >
+            <input type="text" class="form-control" id="exampleInputPassword1">
         </div>
-         <div class="form-group d-inline-flex">
+        <div class="form-group d-inline-flex">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Categoria:</label>
-            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-         <div class="form-group d-inline-flex">
+        <div class="form-group d-inline-flex">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Marca:</label>
-            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
 
-         <div class="form-group d-inline-flex ">
-            <label for="formFileSm" class="form-label">Imagem</label>
+        <div class="form-group d-flex align-items-center">
+            <label for="formFileSm" class="form-label w-50 w-sm-25">Imagem:</label>
             <input class="form-control" type="file" id="formFileSm">
-         </div>
+        </div>
 
-         <div class="form-group d-inline-flex">
+        <div class="form-group d-inline-flex">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Valor:</label>
-            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-         <div class="form-group d-inline-flex">
+        <div class="form-group d-inline-flex">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Detalhes:</label>
-            <input type="text" class="form-control  " id="exampleInputEmail1" aria-describedby="emailHelp" >
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
 
-        <div class="d-flex justify-content-center mt-3">
-        <button type="submit" class="btn btn-success w-50">Salvar Dados</button>
+        <div class="d-flex justify-content-center mt-3 gap-2" role="group">
+            <button type="submit" class="btn btn-success btn-sm w-25">Salvar Dados</button>
+            <button type="button" class="btn btn-danger btn-sm w-25">Cancelar Opera\xe7\xe3o</button>
         </div>
-        </form>
+    </form>
     `;
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex flex-col";
     main.insertAdjacentHTML("beforeend", $toyform);
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/main":"gfq3l"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
 
 //# sourceMappingURL=index.a5535e9f.js.map
