@@ -38,15 +38,17 @@ export const NewToyForm = () =>{
         </div>
 
         <div class="d-flex justify-content-center mt-3 gap-2" role="group">
-            <button type="submit" class="btn btn-success btn-sm w-25">
-                Salvar Dados
-            </button>
-            
-            <button type="button" class="btn btn-danger btn-sm w-25">
-                <a class="btn" href="#admin" role="button">
+            <a class="btn" href="" role="button">
+                <button type="submit" class="btn btn-success">
+                    Salvar Dados
+                </button>
+            </a>
+
+            <a class="btn" href="#admin" role="button">
+                <button type="button" class="btn btn-danger">
                     Voltar
-                </a>
-            </button>
+                </button>
+            </a>
         </div>
     </form>
     `

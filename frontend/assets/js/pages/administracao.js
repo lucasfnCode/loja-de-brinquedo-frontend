@@ -35,9 +35,11 @@ export const administracao = () => {
                             <td class="text-center">3,80</td>
                             <td class="text-center">8cm</td>
                             <td class="text-center">
+                                <a class="btn" href="#edit" role="button">
                                 <button class="btn btn-sm btn-outline-warning">
                                     Editar
                                 </button>
+                                </a>
                                 <button class="btn btn-sm btn-outline-danger">
                                     Excluir
                                 </button>
@@ -46,16 +48,17 @@ export const administracao = () => {
                     </tbody>
                 </table>
             </div>
+
             <div class="p-5 d-flex justify-content-center">
-                <button type="button" class="btn btn-sm btn-outline-success" id="MakeNewToy">
-                    <a class="btn" href="#toymaker" role="button"> 
+                <a class="btn" href="#toymaker" role="button"> 
+                    <button type="button" class="btn btn-outline-success" id="MakeNewToy">
                         Novo Brinquedo
-                    </a>
-                </button>
+                    </button>
+                </a>
             </div>
         </section>
     `;
     const main = CreateMain();
-    main.classList = "d-flex flex-column align-items-center"; // Centraliza horizontalmente e verticalmente
+    // main.classList = "d-flex flex-column align-items-center"; 
     main.insertAdjacentHTML("beforeend", $adm);
 }

@@ -1,14 +1,14 @@
 4746
 64/home/gabriel/Documentos/loja-de-brinquedo/frontend/package.json1740943388999239256 0
-79/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.ab0485ab.css.map1746622512524469525 0
-74/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.a5535e9f.js1746622594769311334 0
-78/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.a5535e9f.js.map1746622594771311365 0
-75/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.f3b972e4.css1746622512463469230 0
-82/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/pistatubarao.a1425f1f.jpg1746622512498469399 0
-79/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.f3b972e4.css.map1746622512470469264 0
-75/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.ab0485ab.css1746622512519469501 0
+79/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.ab0485ab.css.map1746626239889217312 0
+74/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.a5535e9f.js1746626239773215697 0
+78/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.a5535e9f.js.map1746626239775215725 0
+75/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.f3b972e4.css1746626239792215962 0
+82/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/pistatubarao.a1425f1f.jpg1746626239783215836 0
+79/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.f3b972e4.css.map1746626239794215989 0
+75/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.ab0485ab.css1746626239885217256 0
 74/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.0d2e5026.js1740943340986159023 0
-56/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist1746622594771311365 1
+56/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist1746626239890217326 1
 92/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@popperjs/core/package.json1740943626012401864 0
 89/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@popperjs/core/README.md1740943625939400309 0
 97/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@popperjs/core/dist/esm/index.js1740943626683416147 0
@@ -410,7 +410,7 @@
 118/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/features/kerning-pairs-ligatures.js1740943627442432301 0
 78/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.0d2e5026.js.map1740943340986159023 0
 105/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/features/pdf-viewer.js1740943627600435664 0
-79/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/ben10pika.8685591c.jpg1746622512413468988 0
+79/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/ben10pika.8685591c.jpg1746626239750215377 0
 108/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/features/dispatchevent.js1740943627198427108 0
 107/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/features/rel-noopener.js1740943627649436707 0
 108/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/features/online-status.js1740943627591435472 0
@@ -704,7 +704,7 @@
 88/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/posthtml-render/license1740943625839398180 0
 90/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/posthtml-render/readme.md1740943626063402949 0
 86/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/argparse/CHANGELOG.md1740943626204405951 0
-67/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.html1746622512459469211 0
+67/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/index.html1746626239768215627 0
 96/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/regions/GY.js1740943627348430301 0
 85/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/argparse/argparse.js1740943626098403694 0
 84/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/argparse/lib/sub.js1740943626129404354 0
@@ -2517,7 +2517,7 @@
 106/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/src/_array_like_to_array.mjs1740943627497433472 0
 137/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/msgpackr-extract/node_modules/node-gyp-build-optional-packages/README.md1740943626061402907 0
 114/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@popperjs/core/dist/esm/utils/getBasePlacement.js1740943627235427896 0
-83/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/components/sidebar.js1746622597092346430 0
+83/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/components/sidebar.js1746624212524817501 0
 109/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/_/_to_property_key/package.json1740943627426431961 0
 110/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@popperjs/core/lib/utils/expandToHashMap.d.ts1740943627064424256 0
 112/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/lmdb/dependencies/lmdb/libraries/liblmdb/lmdb.h1740943626969422234 0
@@ -2626,7 +2626,7 @@
 110/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/cjs/_iterable_to_array_limit.cjs1740943626634415104 0
 86/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/bootstrap/js/dist/dom1740943627582435281 1
 125/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/posthtml/node_modules/dom-serializer/lib/esm/foreignNames.js1740943625966400884 0
-67/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/pages1746131491448300614 1
+67/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/pages1746626210535808392 1
 105/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/features/hashchange.js1740943627350430343 0
 96/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/regions/MX.js1740943627567434962 0
 121/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/esm/_class_static_private_field_spec_get.js1740943626799418616 0
@@ -2715,7 +2715,7 @@
 86/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@parcel/namer-default1740943625996401523 1
 116/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/lmdb/dependencies/lmdb/libraries/liblmdb/mdb_drop.11740943626536413018 0
 99/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/bootstrap/dist/js/bootstrap.js.map1740943627424431918 0
-84/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/pages/novoBrinquedo.js1746134388906797529 0
+84/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/pages/novoBrinquedo.js1746624935235793750 0
 84/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@lezer/lr/README.md1740943626218406249 0
 106/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@popperjs/core/dist/esm/modifiers/flip.js1740943627204427236 0
 83/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/bootstrap/dist/css1740943627509433727 1
@@ -2921,7 +2921,7 @@
 105/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@parcel/runtime-browser-hmr/package.json1740943626227406440 0
 89/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/entities/lib/escape.d.ts1740943626713416785 0
 89/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/domhandler/lib/node.d.ts1740943626372409527 0
-70/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/index.js1746134248554812766 0
+70/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/index.js1746626239056205714 0
 86/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@babel/code-frame/lib1740943625966400884 1
 91/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/domutils/lib/esm/legacy.js1740943626145404695 0
 83/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/msgpackr/unpack.js1740943626613414657 0
@@ -2949,7 +2949,7 @@
 107/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@parcel/types-internal/scripts/build-ts.js1740943625939400309 0
 106/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/bootstrap/scss/mixins/_border-radius.scss1740943627595435558 0
 110/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/posthtml/node_modules/entities/lib/index.d.ts1740943626482411868 0
-82/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/components/header.js1746140548956246957 0
+82/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/components/header.js1746625208554247283 0
 80/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/chalk/readme.md1740943626069403077 0
 122/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/posthtml/node_modules/dom-serializer/lib/esm/package.json1740943626139404567 0
 100/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/msgpackr/dist/index-no-eval.cjs.map1740943626666415785 0
@@ -3483,7 +3483,7 @@
 103/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/bootstrap/dist/js/bootstrap.esm.js.map1740943627383431046 0
 120/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/posthtml/node_modules/dom-serializer/lib/esm/index.d.ts1740943626306408122 0
 118/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/_/_interop_require_wildcard/package.json1740943627315429598 0
-76/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/jabolo.2d65496e.jpg1746622512498469399 0
+76/home/gabriel/Documentos/loja-de-brinquedo/frontend/dist/jabolo.2d65496e.jpg1746626239783215836 0
 110/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/caniuse-lite/data/features/async-functions.js1740943626619414784 0
 89/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/is-arrayish/package.json1740943625845398308 0
 123/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/posthtml/node_modules/dom-serializer/node_modules/entities1740943626264407228 1
@@ -4139,7 +4139,7 @@
 99/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/_/_async_to_generator1740943627021423341 1
 106/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/_/_create_class/package.json1740943627237427938 0
 96/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/_/_to_property_key1740943627426431961 1
-84/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/pages/administracao.js1746138510524902300 0
+84/home/gabriel/Documentos/loja-de-brinquedo/frontend/assets/js/pages/administracao.js1746625440313784290 0
 98/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@swc/helpers/_/_apply_decs_2203_r1740943626966422171 1
 87/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@parcel/types-internal1740943626293407845 1
 92/home/gabriel/Documentos/loja-de-brinquedo/frontend/node_modules/@parcel/reporter-dev-server1740943626632415061 1
