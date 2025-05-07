@@ -2,7 +2,7 @@ import { createHeader } from "./components/header"
 import { SideBar } from "./components/sidebar";
 import { ClearBody } from "./functions/clearbody";
 import { aboutUs } from "./pages/about";
-import { adiministracao } from "./pages/adiministracao";
+import { administracao } from "./pages/administracao";
 import { criarBrinquedo } from "./pages/Brinquedo";
 import { criarCatalogo } from "./pages/catalogo";
 import { homePage } from "./pages/home";
@@ -23,8 +23,8 @@ function renderByHashChange(){
         case '#catalogo':
             criarCatalogo();
             break;
-        case '#adhemin':
-            adiministracao();
+        case '#admin':
+            administracao();
             break;
         case '#about':
             aboutUs();

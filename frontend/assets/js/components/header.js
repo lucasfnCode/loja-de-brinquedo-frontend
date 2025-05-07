@@ -3,8 +3,11 @@ export const createHeader =()=>{
   
     const $header = `
             <img src="https://placehold.co/175x100" alt="logo">
-            <h1 class="ms-1">Nome da loja de Brinquedo</h1>
-            `
+            <div class="">
+            <p class="text-center">
+                <h1 class="ms-1">Nome da Loja de Brinquedo</h1>
+            </p>
+            </div>    `
     
     const header = document.createElement('header')
     header.classList='bg-warning'

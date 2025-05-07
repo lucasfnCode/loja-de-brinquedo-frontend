@@ -45,6 +45,11 @@ table {
 header{
 	display: flex;
 }
+.nav-link.active {
+	background-color: #FFC107 !important; 
+	color: white !important; 
+	border: none;
+}
 /* .sidebar{
 	background-color: yellow;
 } */

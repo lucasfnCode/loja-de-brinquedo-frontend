@@ -600,7 +600,7 @@ var _header = require("./components/header");
 var _sidebar = require("./components/sidebar");
 var _clearbody = require("./functions/clearbody");
 var _about = require("./pages/about");
-var _adiministracao = require("./pages/adiministracao");
+var _administracao = require("./pages/administracao");
 var _brinquedo = require("./pages/Brinquedo");
 var _catalogo = require("./pages/catalogo");
 var _home = require("./pages/home");
@@ -617,8 +617,8 @@ function renderByHashChange() {
         case '#catalogo':
             (0, _catalogo.criarCatalogo)();
             break;
-        case '#adhemin':
-            (0, _adiministracao.adiministracao)();
+        case '#admin':
+            (0, _administracao.administracao)();
             break;
         case '#about':
             (0, _about.aboutUs)();
@@ -636,15 +636,18 @@ renderByHashChange();
 window.addEventListener('hashchange', renderByHashChange);
 window.addEventListener("load", renderByHashChange);
 
-},{"./components/header":"i9Hva","./components/sidebar":"2O7Kx","./functions/clearbody":"e1A7F","./pages/about":"8zoV7","./pages/adiministracao":"bkeon","./pages/Brinquedo":"4PeLC","./pages/catalogo":"3q6Yq","./pages/home":"1VBCE","./pages/novoBrinquedo":"iIXVk"}],"i9Hva":[function(require,module,exports,__globalThis) {
+},{"./components/header":"i9Hva","./components/sidebar":"2O7Kx","./functions/clearbody":"e1A7F","./pages/about":"8zoV7","./pages/Brinquedo":"4PeLC","./pages/catalogo":"3q6Yq","./pages/home":"1VBCE","./pages/novoBrinquedo":"iIXVk","./pages/administracao":"bIm5Q"}],"i9Hva":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createHeader", ()=>createHeader);
 const createHeader = ()=>{
     const $header = `
             <img src="https://placehold.co/175x100" alt="logo">
-            <h1 class="ms-1">Nome da loja de Brinquedo</h1>
-            `;
+            <div class="">
+            <p class="text-center">
+                <h1 class="ms-1">Nome da Loja de Brinquedo</h1>
+            </p>
+            </div>    `;
     const header = document.createElement('header');
     header.classList = 'bg-warning';
     header.insertAdjacentHTML('afterbegin', $header);
@@ -688,41 +691,58 @@ parcelHelpers.export(exports, "SideBar", ()=>SideBar);
 var _main = require("./main");
 const SideBar = ()=>{
     const $sidebar = `
-    
-    
-<section class="sidebar d-none d-sm-block bg-warning vh-100" id="sidebar" style="width: 175px; position: fixed; left: 0;"> 
-    <nav>
-        <h1>Menu</h1>
-            
-                <div class ="list-group">
-                    <a href="#home" class="list-group-item list-group-item-warning list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" aria-controls="list-home">
-                        Home
-                    </a>
-                                         
-                    <a href="#catalogo" class="list-group-item list-group-item-warning list-group-item-action" id="list-catalogo-list" data-bs-toggle="list" href="#list-catalogo" aria-controls="list-catalogo">
-                        Cat\xe1logo de Brinquedos
-                    </a>
-                        
-
-                        
-                    <a href="#adhemin" class="list-group-item list-group-item-warning list-group-item-action" id="list-admin-list" data-bs-toggle="list" href="#list-admin" aria-controls="list-admin">
-                        Administra\xe7\xe3o
-                    </a>    
-                        
-                    
-                        
-                    <a href="#about" class="list-group-item list-group-item-warning list-group-item-action" id="list-sobre-list" data-bs-toggle="list" href="#list-sobre" aria-controls="list-sobre">
-                        Sobre a Equipe
-                    </a>
-                </div>
-            
-    </nav>
-</section>
-
-   
+        <section class="sidebar d-none d-sm-block bg-warning vh-100" id="sidebar" style="width: 175px; position: fixed; left: 0;"> 
+            <nav>
+                <h1>Menu</h1>
+                    <div class="list-group">
+                        <a href="#home" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
+                            Home
+                        </a>
+                        <a href="#catalogo" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
+                            Cat\xe1logo de Brinquedos
+                        </a>
+                        <a href="#admin" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
+                            Administra\xe7\xe3o
+                        </a>    
+                        <a href="#about" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
+                            Sobre a Equipe
+                        </a>
+                    </div>
+            </nav>
+        </section>
     `;
     const main = (0, _main.CreateMain)();
     main.insertAdjacentHTML('afterbegin', $sidebar);
+    // Aqui é o js pra fazer o select funcionar ao clicar no menu da sidebar
+    if (typeof window !== 'undefined') {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const activeClass = 'active';
+        navLinks.forEach((link)=>{
+            link.addEventListener('click', function() {
+                // Remove a classe 'active' de todos os links
+                document.querySelectorAll('.nav-link.active').forEach((activeLink)=>{
+                    activeLink.classList.remove(activeClass);
+                });
+                // Adiciona a classe 'active' ao link clicado
+                this.classList.add(activeClass);
+                // Salva o ID do link no localStorage
+                localStorage.setItem('activeNavLinkId', this.getAttribute('href'));
+            });
+        });
+        // Define o link ativo na inicialização
+        const savedNavLinkId = localStorage.getItem('activeNavLinkId');
+        if (savedNavLinkId) {
+            const activeLink = document.querySelector(`[href="${savedNavLinkId}"]`);
+            if (activeLink) activeLink.classList.add(activeClass);
+            else if (navLinks.length > 0) {
+                navLinks[0].classList.add(activeClass);
+                localStorage.setItem('activeNavLinkId', navLinks[0].getAttribute('href'));
+            }
+        } else if (navLinks.length > 0) {
+            navLinks[0].classList.add(activeClass);
+            localStorage.setItem('activeNavLinkId', navLinks[0].getAttribute('href'));
+        }
+    }
 };
 
 },{"./main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gfq3l":[function(require,module,exports,__globalThis) {
@@ -811,55 +831,6 @@ const aboutUs = ()=>{
  // VOU FICAR MAIS MEIA HORA OLLHANDO PRA ESSA TELA PRETA FEIA E .. ja baixo
  // instalando se vc ta lendo isso vc ta muito desocupado
 ;
-
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bkeon":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "adiministracao", ()=>adiministracao);
-var _main = require("../components/main");
-const adiministracao = ()=>{
-    const $adm = `
-        <section>
-            <table class="table table-striped table-bordered table-hover w-100 m-3">
-                <thead class="table-warning">
-                    <tr>
-                    <th scope="col">Descri\xe7ao</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Quantidade</th>
-                    </tr>
-                </thead>
-
-                <tbody class="table-group-divider">
-                    <tr>
-                        <td>descri\xe7ao de brinquedo</td>
-                        <td>categoria 1 </td>
-                        <td>72,90</td>
-                        <td>10</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>dminha pommba</td>
-                        <td>categoria 8cm </td>
-                        <td>3,80</td>
-                        <td>8cm</td>
-                    </tr>            
-                </tbody>
-            </table>
-        </section>
-
-        <aside class="p-5">
-            <button type="button" class="btn btn-success" id="MakeNewToy">
-                <a class="btn" href="#toymaker" role="button"> 
-                    Novo Brinquedo
-                <a>
-            </button>
-        </aside>     
-    `;
-    const main = (0, _main.CreateMain)();
-    main.classList = "d-flex flex-col";
-    main.insertAdjacentHTML("beforeend", $adm);
-};
 
 },{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4PeLC":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -1028,6 +999,9 @@ parcelHelpers.export(exports, "NewToyForm", ()=>NewToyForm);
 var _main = require("../components/main");
 const NewToyForm = ()=>{
     const $toyform = `
+    
+    <h1 class="ms-2">Cadastro de Produto</h1>
+    
     <form class="d-grid w-100 gap-1 p-5">
         <div class="form-group d-flex justify-content-between">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Codigo:</label>
@@ -1061,8 +1035,15 @@ const NewToyForm = ()=>{
         </div>
 
         <div class="d-flex justify-content-center mt-3 gap-2" role="group">
-            <button type="submit" class="btn btn-success btn-sm w-25">Salvar Dados</button>
-            <button type="button" class="btn btn-danger btn-sm w-25">Cancelar Opera\xe7\xe3o</button>
+            <button type="submit" class="btn btn-success btn-sm w-25">
+                Salvar Dados
+            </button>
+            
+            <button type="button" class="btn btn-danger btn-sm w-25">
+                <a class="btn" href="#admin" role="button">
+                    Voltar
+                </a>
+            </button>
         </div>
     </form>
     `;
@@ -1071,6 +1052,71 @@ const NewToyForm = ()=>{
     main.insertAdjacentHTML("beforeend", $toyform);
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/main":"gfq3l"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/main":"gfq3l"}],"bIm5Q":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "administracao", ()=>administracao);
+var _main = require("../components/main");
+const administracao = ()=>{
+    const $adm = `
+        <section class="w-100"> 
+            <div class="d-flex justify-content-center">
+                <table class="table table-striped table-bordered table-hover w-100 m-3">
+                    <thead class="table-warning">
+                        <tr>
+                        <th scope="col" class="text-center">Descri\xe7\xe3o</th>
+                        <th scope="col" class="text-center">Categoria</th>
+                        <th scope="col" class="text-center">Valor</th>
+                        <th scope="col" class="text-center">Quantidade</th>
+                        <th scope="col" class="text-center">A\xe7\xe3o</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center">Descri\xe7\xe3o de Brinquedo</td>
+                            <td class="text-center">Categoria 1</td>
+                            <td class="text-center">72,90</td>
+                            <td class="text-center">10</td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-warning">
+                                    Editar
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Minha Pomba</td>
+                            <td class="text-center">Categoria 8cm</td>
+                            <td class="text-center">3,80</td>
+                            <td class="text-center">8cm</td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-warning">
+                                    Editar
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-5 d-flex justify-content-center">
+                <button type="button" class="btn btn-sm btn-outline-success" id="MakeNewToy">
+                    <a class="btn" href="#toymaker" role="button"> 
+                        Novo Brinquedo
+                    </a>
+                </button>
+            </div>
+        </section>
+    `;
+    const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-column align-items-center"; // Centraliza horizontalmente e verticalmente
+    main.insertAdjacentHTML("beforeend", $adm);
+};
+
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
 
 //# sourceMappingURL=index.a5535e9f.js.map

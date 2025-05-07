@@ -36,4 +36,10 @@ table {
 header {
   display: flex;
 }
+
+.nav-link.active {
+  border: none;
+  color: #fff !important;
+  background-color: #ffc107 !important;
+}
 /*# sourceMappingURL=index.f3b972e4.css.map */

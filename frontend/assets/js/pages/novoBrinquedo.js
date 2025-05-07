@@ -2,6 +2,9 @@ import { CreateMain } from "../components/main"
 
 export const NewToyForm = () =>{
     const $toyform = `
+    
+    <h1 class="ms-2">Cadastro de Produto</h1>
+    
     <form class="d-grid w-100 gap-1 p-5">
         <div class="form-group d-flex justify-content-between">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Codigo:</label>
@@ -35,8 +38,15 @@ export const NewToyForm = () =>{
         </div>
 
         <div class="d-flex justify-content-center mt-3 gap-2" role="group">
-            <button type="submit" class="btn btn-success btn-sm w-25">Salvar Dados</button>
-            <button type="button" class="btn btn-danger btn-sm w-25">Cancelar Operação</button>
+            <button type="submit" class="btn btn-success btn-sm w-25">
+                Salvar Dados
+            </button>
+            
+            <button type="button" class="btn btn-danger btn-sm w-25">
+                <a class="btn" href="#admin" role="button">
+                    Voltar
+                </a>
+            </button>
         </div>
     </form>
     `
