@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"6xvnb":[function(require,module,exports,__globalThis) {
+})({"hNhPk":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -636,7 +636,7 @@ renderByHashChange();
 window.addEventListener('hashchange', renderByHashChange);
 window.addEventListener("load", renderByHashChange);
 
-},{"./components/header":"i9Hva","./components/sidebar":"2O7Kx","./functions/clearbody":"e1A7F","./pages/about":"8zoV7","./pages/Brinquedo":"4PeLC","./pages/catalogo":"3q6Yq","./pages/home":"1VBCE","./pages/novoBrinquedo":"iIXVk","./pages/administracao":"bIm5Q"}],"i9Hva":[function(require,module,exports,__globalThis) {
+},{"./components/header":"i9Hva","./components/sidebar":"2O7Kx","./functions/clearbody":"e1A7F","./pages/about":"8zoV7","./pages/administracao":"bIm5Q","./pages/Brinquedo":"4PeLC","./pages/catalogo":"3q6Yq","./pages/home":"1VBCE","./pages/novoBrinquedo":"iIXVk"}],"i9Hva":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createHeader", ()=>createHeader);
@@ -832,6 +832,91 @@ const aboutUs = ()=>{
  // VOU FICAR MAIS MEIA HORA OLLHANDO PRA ESSA TELA PRETA FEIA E .. ja baixo
  // instalando se vc ta lendo isso vc ta muito desocupado
 ;
+
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bIm5Q":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "administracao", ()=>administracao);
+var _main = require("../components/main");
+const administracao = ()=>{
+    const bonneer = {
+        nome: "jadir",
+        id: "1",
+        desc: "vai rodar o codigo no papel"
+    };
+    const adibule = {
+        nome: "jadira",
+        id: "1",
+        desc: "so nao chama ela de cavala"
+    };
+    // place holdere pq nao achei o backend
+    function creatToy(n) {
+        const htmlToy = `   
+            <tr>
+                <td class="text-center">oooo</td>
+                <td class="text-center">${n.nome}</td>
+                <td class="text-center">${n.desc}</td>
+                <td class="text-center">${n.id}</td>
+                <td class="text-center">
+                    <a class="btn" href="#edit" role="button">
+                                <button class="btn btn-sm btn-outline-warning">
+                                    Editar
+                                </button>
+                                </a>
+                    <button class="delet btn btn-sm btn-outline-danger" >
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+                `;
+        htmlToy.id = n.nome;
+        return htmlToy;
+    }
+    const removeToy = ()=>{
+        $delets.forEach((btnsComIdDelet)=>{
+            btnsComIdDelet.addEventListener('click', ()=>{
+                const elementoPai = btnsComIdDelet.parentElement.parentElement;
+                elementoPai.remove();
+            });
+        });
+    };
+    const $adm = `
+        <section class="w-100"> 
+            <div class="d-flex justify-content-center">
+                <table class="table table-striped table-bordered table-hover w-100 m-3">
+                    <thead class="table-warning">
+                        <tr>
+                        <th scope="col" class="text-center">Descri\xe7\xe3o</th>
+                        <th scope="col" class="text-center">Categoria</th>
+                        <th scope="col" class="text-center">Valor</th>
+                        <th scope="col" class="text-center">Quantidade</th>
+                        <th scope="col" class="text-center">A\xe7\xe3o</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        ${creatToy(bonneer)}
+                        ${creatToy(adibule)}
+                            <!-- to chamando localmente pq nao tem o back -->
+                            <!--  com o back \xe9 so um fetchall redenrizando as paradas -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="p-5 d-flex justify-content-center">
+                <a class="btn" href="#toymaker" role="button"> 
+                    <button type="button" class="btn btn-outline-success" id="MakeNewToy">
+                        Novo Brinquedo
+                    </button>
+                </a>
+            </div>
+        </section>
+
+    `;
+    const main = (0, _main.CreateMain)();
+    main.insertAdjacentHTML("beforeend", $adm);
+    const $delets = document.querySelectorAll(".delet");
+    removeToy();
+};
 
 },{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4PeLC":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -1055,74 +1140,6 @@ const NewToyForm = ()=>{
     main.insertAdjacentHTML("beforeend", $toyform);
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/main":"gfq3l"}],"bIm5Q":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "administracao", ()=>administracao);
-var _main = require("../components/main");
-const administracao = ()=>{
-    const $adm = `
-        <section class="w-100"> 
-            <div class="d-flex justify-content-center">
-                <table class="table table-striped table-bordered table-hover w-100 m-3">
-                    <thead class="table-warning">
-                        <tr>
-                        <th scope="col" class="text-center">Descri\xe7\xe3o</th>
-                        <th scope="col" class="text-center">Categoria</th>
-                        <th scope="col" class="text-center">Valor</th>
-                        <th scope="col" class="text-center">Quantidade</th>
-                        <th scope="col" class="text-center">A\xe7\xe3o</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <td class="text-center">Descri\xe7\xe3o de Brinquedo</td>
-                            <td class="text-center">Categoria 1</td>
-                            <td class="text-center">72,90</td>
-                            <td class="text-center">10</td>
-                            <td class="text-center">
-                                <button class="btn btn-sm btn-outline-warning">
-                                    Editar
-                                </button>
-                                <button class="btn btn-sm btn-outline-danger">
-                                    Excluir
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">Minha Pomba</td>
-                            <td class="text-center">Categoria 8cm</td>
-                            <td class="text-center">3,80</td>
-                            <td class="text-center">8cm</td>
-                            <td class="text-center">
-                                <a class="btn" href="#edit" role="button">
-                                <button class="btn btn-sm btn-outline-warning">
-                                    Editar
-                                </button>
-                                </a>
-                                <button class="btn btn-sm btn-outline-danger">
-                                    Excluir
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="p-5 d-flex justify-content-center">
-                <a class="btn" href="#toymaker" role="button"> 
-                    <button type="button" class="btn btn-outline-success" id="MakeNewToy">
-                        Novo Brinquedo
-                    </button>
-                </a>
-            </div>
-        </section>
-    `;
-    const main = (0, _main.CreateMain)();
-    // main.classList = "d-flex flex-column align-items-center"; 
-    main.insertAdjacentHTML("beforeend", $adm);
-};
-
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hNhPk","1E7ZB"], "1E7ZB", "parcelRequire94c2")
 
 //# sourceMappingURL=index.a5535e9f.js.map

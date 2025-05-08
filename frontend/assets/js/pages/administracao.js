@@ -1,6 +1,56 @@
 import { CreateMain } from "../components/main"
 
 export const administracao = () => {
+
+    const bonneer = {
+        nome: "jadir",
+        id : "1",
+        desc: "vai rodar o codigo no papel"
+    }
+    const adibule = {
+        nome : "jadira",
+        id: "1",
+        desc : "so nao chama ela de cavala"
+    }
+    // place holdere pq nao achei o backend
+
+    function creatToy(n){ 
+        const htmlToy=`   
+            <tr>
+                <td class="text-center">oooo</td>
+                <td class="text-center">${n.nome}</td>
+                <td class="text-center">${n.desc}</td>
+                <td class="text-center">${n.id}</td>
+                <td class="text-center">
+                    <a class="btn" href="#edit" role="button">
+                                <button class="btn btn-sm btn-outline-warning">
+                                    Editar
+                                </button>
+                                </a>
+                    <button class="delet btn btn-sm btn-outline-danger" >
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+                `     
+                htmlToy.id= n.nome
+        return htmlToy
+    } 
+
+    const  removeToy= ()=>{
+        $delets.forEach((btnsComIdDelet)=>
+            {
+                btnsComIdDelet.addEventListener('click',() => {
+                   const elementoPai =  btnsComIdDelet.parentElement.parentElement
+                   elementoPai.remove()
+                    }   
+                )
+            }
+        ) 
+        
+    }
+
+
     const $adm = `
         <section class="w-100"> 
             <div class="d-flex justify-content-center">
@@ -15,36 +65,10 @@ export const administracao = () => {
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        <tr>
-                            <td class="text-center">Descrição de Brinquedo</td>
-                            <td class="text-center">Categoria 1</td>
-                            <td class="text-center">72,90</td>
-                            <td class="text-center">10</td>
-                            <td class="text-center">
-                                <button class="btn btn-sm btn-outline-warning">
-                                    Editar
-                                </button>
-                                <button class="btn btn-sm btn-outline-danger">
-                                    Excluir
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">Minha Pomba</td>
-                            <td class="text-center">Categoria 8cm</td>
-                            <td class="text-center">3,80</td>
-                            <td class="text-center">8cm</td>
-                            <td class="text-center">
-                                <a class="btn" href="#edit" role="button">
-                                <button class="btn btn-sm btn-outline-warning">
-                                    Editar
-                                </button>
-                                </a>
-                                <button class="btn btn-sm btn-outline-danger">
-                                    Excluir
-                                </button>
-                            </td>
-                        </tr>
+                        ${creatToy(bonneer)}
+                        ${creatToy(adibule)}
+                            <!-- to chamando localmente pq nao tem o back -->
+                            <!--  com o back é so um fetchall redenrizando as paradas -->
                     </tbody>
                 </table>
             </div>
@@ -57,8 +81,12 @@ export const administracao = () => {
                 </a>
             </div>
         </section>
+
     `;
+   
+
     const main = CreateMain();
-    // main.classList = "d-flex flex-column align-items-center"; 
     main.insertAdjacentHTML("beforeend", $adm);
+    const $delets = document.querySelectorAll(".delet");
+    removeToy();
 }
