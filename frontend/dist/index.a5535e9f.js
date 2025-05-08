@@ -1091,19 +1091,19 @@ const NewToyForm = ()=>{
     <form class="d-grid w-100 gap-1 p-5">
         <div class="form-group d-flex justify-content-between">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Codigo:</label>
-            <input type="email" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control w-100"  aria-describedby="emailHelp">
         </div>
         <div class="form-group d-inline-flex">
             <label class="text-start w-50 w-sm-25" for="exampleInputPassword1">Descri\xe7\xe3o:</label>
-            <input type="text" class="form-control" id="exampleInputPassword1">
+            <input type="text" class="form-control" >
         </div>
         <div class="form-group d-inline-flex">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Categoria:</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" class="form-control"  aria-describedby="emailHelp">
         </div>
         <div class="form-group d-inline-flex">
             <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Marca:</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" class="form-control"  aria-describedby="emailHelp">
         </div>
 
         <div class="form-group d-flex align-items-center">
