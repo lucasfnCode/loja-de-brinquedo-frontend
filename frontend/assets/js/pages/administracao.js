@@ -1,26 +1,21 @@
 import { CreateMain } from "../components/main"
 
 export const administracao = () => {
+   
+  async function criarcard(){
+        const prodrow = document.querySelector("#prodrow")
+        //isso aq é serviço da 'service' nao consigo imaginar como passar essa funçao do fetch pra service
+        const response = await  fetch("https://dummyjson.com/products/");
+        const result = await response.json();
+        const products = result.products;
 
-    const bonneer = {
-        nome: "jadir",
-        id : "1",
-        desc: "vai rodar o codigo no papel"
-    }
-    const adibule = {
-        nome : "jadira",
-        id: "1",
-        desc : "so nao chama ela de cavala"
-    }
-    // place holdere pq nao achei o backend
-
-    function creatToy(n){ 
-        const htmlToy=`   
-            <tr>
-                <td class="text-center">oooo</td>
-                <td class="text-center">${n.nome}</td>
-                <td class="text-center">${n.desc}</td>
-                <td class="text-center">${n.id}</td>
+         products.forEach(products => {
+            const $toy=  `
+                <tr>
+                <td class="text-center">${products.title}</td>
+                <td class="text-center">${products.category}</td>
+                <td class="text-center">${products.price}</td>
+                <td class="text-center">${products.id}</td>
                 <td class="text-center">
                     <a class="btn" href="#edit" role="button">
                                 <button class="btn btn-sm btn-outline-warning">
@@ -32,24 +27,14 @@ export const administracao = () => {
                     </button>
                 </td>
             </tr>
-                `     
-                htmlToy.id= n.nome
-        return htmlToy
-    } 
-
-    const  removeToy= ()=>{
-        $delets.forEach((btnsComIdDelet)=>
-            {
-                btnsComIdDelet.addEventListener('click',() => {
-                   const elementoPai =  btnsComIdDelet.parentElement.parentElement
-                   elementoPai.remove()
-                    }   
-                )
-            }
-        ) 
-        
+             `
+            prodrow.insertAdjacentHTML("afterbegin",$toy)
+        });       
     }
 
+    
+//  TODO: O BOTAO DE EXLUIR NAO PODE EXCLUIR O ELEMETO DIRETAMENTE DA TABELA, DEVE TER UM ALERT DE EXCLUÇAO
+// OBG JADIRA AKA MARÇAL DO UX
 
     const $adm = `
         <section class="w-100"> 
@@ -64,9 +49,8 @@ export const administracao = () => {
                         <th scope="col" class="text-center">Ação</th>
                         </tr>
                     </thead>
-                    <tbody class="table-group-divider">
-                        ${creatToy(bonneer)}
-                        ${creatToy(adibule)}
+                    <tbody id="prodrow" class="table-group-divider">
+                       
                             <!-- to chamando localmente pq nao tem o back -->
                             <!--  com o back é so um fetchall redenrizando as paradas -->
                     </tbody>
@@ -87,6 +71,20 @@ export const administracao = () => {
 
     const main = CreateMain();
     main.insertAdjacentHTML("beforeend", $adm);
-    const $delets = document.querySelectorAll(".delet");
+
+    
+    criarcard()
+    const  removeToy= ()=>{
+            document.addEventListener("click", function(event){
+                if (event.target.classList.contains("delet")) {
+                    let row = event.target.closest("tr"); // Encontra o elemento pai <tr>
+                    if (row) {
+                        row.remove(); // Remove o elemento da árvore DOM
+                    }
+                }
+            });
+    }
+
+  
     removeToy();
 }

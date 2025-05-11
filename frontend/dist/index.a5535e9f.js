@@ -839,24 +839,19 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "administracao", ()=>administracao);
 var _main = require("../components/main");
 const administracao = ()=>{
-    const bonneer = {
-        nome: "jadir",
-        id: "1",
-        desc: "vai rodar o codigo no papel"
-    };
-    const adibule = {
-        nome: "jadira",
-        id: "1",
-        desc: "so nao chama ela de cavala"
-    };
-    // place holdere pq nao achei o backend
-    function creatToy(n) {
-        const htmlToy = `   
-            <tr>
-                <td class="text-center">oooo</td>
-                <td class="text-center">${n.nome}</td>
-                <td class="text-center">${n.desc}</td>
-                <td class="text-center">${n.id}</td>
+    async function criarcard() {
+        const prodrow = document.querySelector("#prodrow");
+        //isso aq é serviço da 'service' nao consigo imaginar como passar essa funçao do fetch pra service
+        const response = await fetch("https://dummyjson.com/products/");
+        const result = await response.json();
+        const products = result.products;
+        products.forEach((products)=>{
+            const $toy = `
+                <tr>
+                <td class="text-center">${products.title}</td>
+                <td class="text-center">${products.category}</td>
+                <td class="text-center">${products.price}</td>
+                <td class="text-center">${products.id}</td>
                 <td class="text-center">
                     <a class="btn" href="#edit" role="button">
                                 <button class="btn btn-sm btn-outline-warning">
@@ -868,18 +863,12 @@ const administracao = ()=>{
                     </button>
                 </td>
             </tr>
-                `;
-        htmlToy.id = n.nome;
-        return htmlToy;
-    }
-    const removeToy = ()=>{
-        $delets.forEach((btnsComIdDelet)=>{
-            btnsComIdDelet.addEventListener('click', ()=>{
-                const elementoPai = btnsComIdDelet.parentElement.parentElement;
-                elementoPai.remove();
-            });
+             `;
+            prodrow.insertAdjacentHTML("afterbegin", $toy);
         });
-    };
+    }
+    //  TODO: O BOTAO DE EXLUIR NAO PODE EXCLUIR O ELEMETO DIRETAMENTE DA TABELA, DEVE TER UM ALERT DE EXCLUÇAO
+    // OBG JADIRA AKA MARÇAL DO UX
     const $adm = `
         <section class="w-100"> 
             <div class="d-flex justify-content-center">
@@ -893,9 +882,8 @@ const administracao = ()=>{
                         <th scope="col" class="text-center">A\xe7\xe3o</th>
                         </tr>
                     </thead>
-                    <tbody class="table-group-divider">
-                        ${creatToy(bonneer)}
-                        ${creatToy(adibule)}
+                    <tbody id="prodrow" class="table-group-divider">
+                       
                             <!-- to chamando localmente pq nao tem o back -->
                             <!--  com o back \xe9 so um fetchall redenrizando as paradas -->
                     </tbody>
@@ -914,7 +902,15 @@ const administracao = ()=>{
     `;
     const main = (0, _main.CreateMain)();
     main.insertAdjacentHTML("beforeend", $adm);
-    const $delets = document.querySelectorAll(".delet");
+    criarcard();
+    const removeToy = ()=>{
+        document.addEventListener("click", function(event) {
+            if (event.target.classList.contains("delet")) {
+                let row = event.target.closest("tr"); // Encontra o elemento pai <tr>
+                if (row) row.remove(); // Remove o elemento da árvore DOM
+            }
+        });
+    };
     removeToy();
 };
 
@@ -1037,6 +1033,7 @@ var _ben10PikaJpg = require("../../media/ben10pika.jpg");
 var _ben10PikaJpgDefault = parcelHelpers.interopDefault(_ben10PikaJpg);
 var _jaboloJpg = require("../../media/jabolo.jpg");
 var _jaboloJpgDefault = parcelHelpers.interopDefault(_jaboloJpg);
+var _productService = require("../sevice/productService");
 const img3 = (0, _jaboloJpgDefault.default);
 const img2 = (0, _ben10PikaJpgDefault.default);
 const img1 = (0, _pistatubaraoJpgDefault.default);
@@ -1046,39 +1043,73 @@ const homePage = ()=>{
     
         <section class="p-2 d-grid">
             <h2>Brinquedos em destaque</h2>
-            <ul class="row p-0 m-0 text-center">
-                <li class="list-group-item col m-3">
-                    <a href="#brinquedo">
-                        <img src="${img1}" alt="brinquedo1" >
-                        <p" class="d-block ">dedscri\xe7ao</p>
-                        <p>pre\xe7o</p>
-                    </a>
-                </li>
-                <li class="list-group-item col m-3">
-                    <img src="${img2}" alt="brinquedo1">
-                    <p" class="d-block ">descri\xe7ao</p>
-                    <p>pre\xe7o</p>
-                </li>
-                <li class="list-group-item col m-3">
-                    <img src="${img3}" alt="brinquedo1">
-                    <p" class="d-block ">descri\xe7ao</p>
-                    <p>pre\xe7o</p>
-                </li>
+            <ul id="prodrow" class="row p-0 m-0 text-center">
+               
             </ul>
         </section>
     `;
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex flex-col";
     main.insertAdjacentHTML('beforeend', $homeHTML);
+    async function criarcard() {
+        const prodrow = document.querySelector("#prodrow");
+        //isso aq é serviço da 'service' nao consigo imaginar como passar essa funçao do fetch pra service
+        const response = await fetch("https://dummyjson.com/products/");
+        const result = await response.json();
+        const products = result.products;
+        products.forEach((products)=>{
+            const $toy = `
+             <li class="list-group-item col m-3">
+                     <a href="#brinquedo/${products.id}">
+                         <img src="${products.thumbnail}" alt="brinquedo1" >
+                        <p" class="d-block ">${products.title}</p>
+                         <p>${products.price}</p>
+                    </a>
+                </li>
+             `;
+            prodrow.insertAdjacentHTML("beforeend", $toy);
+        });
+    }
+    criarcard();
 };
 
-},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","../../media/ben10pika.jpg":"agZqH","../../media/jabolo.jpg":"3Vtic","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"agZqH":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","../../media/ben10pika.jpg":"agZqH","../../media/jabolo.jpg":"3Vtic","../sevice/productService":"FPK3Y","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"agZqH":[function(require,module,exports,__globalThis) {
 module.exports = require("f06e5b22190ecc45").getBundleURL('cOZeh') + "ben10pika.8685591c.jpg" + "?" + Date.now();
 
 },{"f06e5b22190ecc45":"lgJ39"}],"3Vtic":[function(require,module,exports,__globalThis) {
 module.exports = require("9630b1f20b46c6d0").getBundleURL('cOZeh') + "jabolo.2d65496e.jpg" + "?" + Date.now();
 
-},{"9630b1f20b46c6d0":"lgJ39"}],"iIXVk":[function(require,module,exports,__globalThis) {
+},{"9630b1f20b46c6d0":"lgJ39"}],"FPK3Y":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getAllProducts", ()=>getAllProducts);
+var _baseurlJs = require("./baseurl.js");
+async function fetchdata(baseUrl) {
+    try {
+        const respose = await fetch(baseUrl);
+        if (!respose.ok) throw Error(`erro: ${respose.statusText}`);
+        const result = await Response.json;
+        return result.data;
+    } catch (erro) {
+        console.log(erro);
+        throw erro;
+    }
+}
+const getAllProducts = ()=>fetchdata(`${(0, _baseurlJs.baseUrl)}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'aplication/json'
+        }
+    });
+
+},{"./baseurl.js":"9Tkdh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Tkdh":[function(require,module,exports,__globalThis) {
+// por propblemas tecnicos vou usar o dummyjson como place holder
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "baseUrl", ()=>baseUrl);
+const baseUrl = "https://dummyjson.com/products";
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIXVk":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "NewToyForm", ()=>NewToyForm);
