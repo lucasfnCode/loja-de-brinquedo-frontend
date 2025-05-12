@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"6xvnb":[function(require,module,exports,__globalThis) {
+})({"hNhPk":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -1123,6 +1123,6 @@ const administracao = ()=>{
     main.insertAdjacentHTML("beforeend", $adm);
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hNhPk","1E7ZB"], "1E7ZB", "parcelRequire94c2")
 
 //# sourceMappingURL=index.a5535e9f.js.map
