@@ -29,12 +29,19 @@ function renderByHashChange(){
         case '#about':
             aboutUs();
             break;
-        case '#brinquedo':
-            criarBrinquedo();
             break;
         case '#toymaker':
             NewToyForm();
             break
+        default:
+            if(location.hash.startsWith("#brinquedo")){
+                const id = location.hash.split("/")[1];
+                if(id){
+                    criarBrinquedo(id);
+                }else{
+                    console.log("ID de produto vazio");
+                }
+            }
     }   
   
 }

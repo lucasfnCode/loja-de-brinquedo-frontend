@@ -623,12 +623,15 @@ function renderByHashChange() {
         case '#about':
             (0, _about.aboutUs)();
             break;
-        case '#brinquedo':
-            (0, _brinquedo.criarBrinquedo)();
-            break;
         case '#toymaker':
             (0, _novoBrinquedo.NewToyForm)();
             break;
+        default:
+            if (location.hash.startsWith("#brinquedo")) {
+                const id = location.hash.split("/")[1];
+                if (id) (0, _brinquedo.criarBrinquedo)(id);
+                else console.log("ID de produto vazio");
+            }
     }
 }
 (0, _header.createHeader)();
@@ -921,16 +924,21 @@ parcelHelpers.export(exports, "criarBrinquedo", ()=>criarBrinquedo);
 var _main = require("../components/main");
 var _pistatubaraoJpg = require("../../media/pistatubarao.jpg");
 var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
+var _toyService = require("../sevice/ToyService");
 const img1 = (0, _pistatubaraoJpgDefault.default);
-const criarBrinquedo = ()=>{
+async function criarBrinquedo() {
+    const brinquedo = await (0, _toyService.getToyById)(location.hash);
+    console.log(location.hash);
+    console.log(brinquedo);
     const $brinquedo = `
+     <p class="col fs-4"> ${brinquedo}</p> 
     <section class="container p-2">
    
         <section class="row">
           <h2>Nome do Brinquedo</h2>
                 <img class="col-sm-3 ms-3 img-thumbnail bg-dark" src="${img1}"></img>
                 <section class="col align-items-center">
-                    <p class="col fs-4"> C\xf3digo do Brinquedo</p> 
+                    <p class="col fs-4"> </p> 
                     <p class="col fs-1">Descri\xe7\xe3o do Brinquedo</p>
                     <p class="col fs-3">R$</p>
                 </section>
@@ -944,9 +952,9 @@ const criarBrinquedo = ()=>{
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex";
     main.insertAdjacentHTML('beforeend', $brinquedo);
-};
+}
 
-},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eyp5S":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../sevice/ToyService":"bCRbn"}],"eyp5S":[function(require,module,exports,__globalThis) {
 module.exports = require("f896fc228d1f03ef").getBundleURL('cOZeh') + "pistatubarao.a1425f1f.jpg" + "?" + Date.now();
 
 },{"f896fc228d1f03ef":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
@@ -984,7 +992,45 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"3q6Yq":[function(require,module,exports,__globalThis) {
+},{}],"bCRbn":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getAllToys", ()=>getAllToys);
+parcelHelpers.export(exports, "getToyById", ()=>getToyById);
+var _baseurlJs = require("./baseurl.js");
+const uri = "products";
+async function fetchData(baseUrl, opition) {
+    try {
+        const respose = await fetch(baseUrl, opition);
+        if (!respose.ok) throw Error(`erro: ${respose.statusText}`);
+        const result = await respose.json();
+        return result.products;
+    } catch (erro) {
+        console.log(erro);
+        throw erro;
+    }
+}
+const getAllToys = ()=>fetchData(`${(0, _baseurlJs.baseUrl)}${uri}`, {
+        method: 'GET',
+        header: {
+            'Content-Type': 'application/json'
+        }
+    });
+const getToyById = (id)=>fetchData(`${(0, _baseurlJs.baseUrl)}${uri}/${id}`, {
+        method: 'GET',
+        header: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+},{"./baseurl.js":"9Tkdh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Tkdh":[function(require,module,exports,__globalThis) {
+// por propblemas tecnicos vou usar o dummyjson como place holder
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "baseUrl", ()=>baseUrl);
+const baseUrl = "https://dummyjson.com/";
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3q6Yq":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // quando uma categoria é selecionada leva para uma vitrine so com brinquedos daquela categoria
@@ -1027,16 +1073,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "homePage", ()=>homePage);
 var _main = require("../components/main");
-var _pistatubaraoJpg = require("../../media/pistatubarao.jpg");
-var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
-var _ben10PikaJpg = require("../../media/ben10pika.jpg");
-var _ben10PikaJpgDefault = parcelHelpers.interopDefault(_ben10PikaJpg);
-var _jaboloJpg = require("../../media/jabolo.jpg");
-var _jaboloJpgDefault = parcelHelpers.interopDefault(_jaboloJpg);
-var _productService = require("../sevice/productService");
-const img3 = (0, _jaboloJpgDefault.default);
-const img2 = (0, _ben10PikaJpgDefault.default);
-const img1 = (0, _pistatubaraoJpgDefault.default);
+var _toyService = require("../sevice/ToyService");
 const homePage = ()=>{
     const $homeHTML = `
     
@@ -1044,7 +1081,6 @@ const homePage = ()=>{
         <section class="p-2 d-grid">
             <h2>Brinquedos em destaque</h2>
             <ul id="prodrow" class="row p-0 m-0 text-center">
-               
             </ul>
         </section>
     `;
@@ -1053,63 +1089,24 @@ const homePage = ()=>{
     main.insertAdjacentHTML('beforeend', $homeHTML);
     async function criarcard() {
         const prodrow = document.querySelector("#prodrow");
-        //isso aq é serviço da 'service' nao consigo imaginar como passar essa funçao do fetch pra service
-        const response = await fetch("https://dummyjson.com/products/");
-        const result = await response.json();
-        const products = result.products;
-        products.forEach((products)=>{
+        const product = await (0, _toyService.getAllToys)();
+        product.forEach((product)=>{
             const $toy = `
-             <li class="list-group-item col m-3">
-                     <a href="#brinquedo/${products.id}">
-                         <img src="${products.thumbnail}" alt="brinquedo1" >
-                        <p" class="d-block ">${products.title}</p>
-                         <p>${products.price}</p>
+                <li class="list-group-item col m-3">
+                    <a href="#brinquedo/${product.id}">
+                        <img src="${product.thumbnail}" alt="brinquedo1" >
+                        <p" class="d-block ">${product.title}</p>
+                        <p>${product.price}</p>
                     </a>
                 </li>
-             `;
+            `;
             prodrow.insertAdjacentHTML("beforeend", $toy);
         });
     }
     criarcard();
 };
 
-},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","../../media/ben10pika.jpg":"agZqH","../../media/jabolo.jpg":"3Vtic","../sevice/productService":"FPK3Y","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"agZqH":[function(require,module,exports,__globalThis) {
-module.exports = require("f06e5b22190ecc45").getBundleURL('cOZeh') + "ben10pika.8685591c.jpg" + "?" + Date.now();
-
-},{"f06e5b22190ecc45":"lgJ39"}],"3Vtic":[function(require,module,exports,__globalThis) {
-module.exports = require("9630b1f20b46c6d0").getBundleURL('cOZeh') + "jabolo.2d65496e.jpg" + "?" + Date.now();
-
-},{"9630b1f20b46c6d0":"lgJ39"}],"FPK3Y":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getAllProducts", ()=>getAllProducts);
-var _baseurlJs = require("./baseurl.js");
-async function fetchdata(baseUrl) {
-    try {
-        const respose = await fetch(baseUrl);
-        if (!respose.ok) throw Error(`erro: ${respose.statusText}`);
-        const result = await Response.json;
-        return result.data;
-    } catch (erro) {
-        console.log(erro);
-        throw erro;
-    }
-}
-const getAllProducts = ()=>fetchdata(`${(0, _baseurlJs.baseUrl)}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'aplication/json'
-        }
-    });
-
-},{"./baseurl.js":"9Tkdh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Tkdh":[function(require,module,exports,__globalThis) {
-// por propblemas tecnicos vou usar o dummyjson como place holder
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "baseUrl", ()=>baseUrl);
-const baseUrl = "https://dummyjson.com/products";
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIXVk":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../sevice/ToyService":"bCRbn"}],"iIXVk":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "NewToyForm", ()=>NewToyForm);
