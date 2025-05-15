@@ -606,7 +606,9 @@ var _catalogo = require("./pages/catalogo");
 var _home = require("./pages/home");
 var _novoBrinquedo = require("./pages/novoBrinquedo");
 function renderByHashChange() {
+    console.log("index:", location.hash);
     (0, _clearbody.ClearBody)();
+    const id = location.hash.split("/")[1];
     (0, _sidebar.SideBar)();
     switch(location.hash){
         case '':
@@ -636,8 +638,7 @@ function renderByHashChange() {
 }
 (0, _header.createHeader)();
 renderByHashChange();
-window.addEventListener('hashchange', renderByHashChange);
-window.addEventListener("load", renderByHashChange);
+window.addEventListener('hashchange', renderByHashChange); // 1:52am eu ganhei
 
 },{"./components/header":"i9Hva","./components/sidebar":"2O7Kx","./functions/clearbody":"e1A7F","./pages/about":"8zoV7","./pages/administracao":"bIm5Q","./pages/Brinquedo":"4PeLC","./pages/catalogo":"3q6Yq","./pages/home":"1VBCE","./pages/novoBrinquedo":"iIXVk"}],"i9Hva":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -916,7 +917,7 @@ const administracao = ()=>{
     removeToy();
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../sevice/ToyService":"bCRbn"}],"bCRbn":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","../sevice/ToyService":"bCRbn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bCRbn":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAllToys", ()=>getAllToys);
@@ -940,15 +941,12 @@ const getAllToys = ()=>fetchData(`${(0, _baseurlJs.baseUrl)}${uri}`, {
             'Content-Type': 'application/json'
         }
     });
-const getToyById = (id)=>{
-    fetchData(`${(0, _baseurlJs.baseUrl)}${uri}/${id}`, {
+const getToyById = (id)=>fetchData(`(${(0, _baseurlJs.baseUrl)} ${uri})/${id}`, {
         method: 'GET',
         header: {
             'Content-Type': 'application/json'
         }
     });
-    console.log((0, _baseurlJs.baseUrl), uri, id);
-};
 
 },{"./baseurl.js":"9Tkdh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Tkdh":[function(require,module,exports,__globalThis) {
 // por propblemas tecnicos vou usar o dummyjson como place holder
@@ -962,78 +960,30 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "criarBrinquedo", ()=>criarBrinquedo);
 var _main = require("../components/main");
-var _pistatubaraoJpg = require("../../media/pistatubarao.jpg");
-var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
-var _toyService = require("../sevice/ToyService");
-const img1 = (0, _pistatubaraoJpgDefault.default);
 async function criarBrinquedo() {
     const id = location.hash.split("/")[1];
-    const brinquedo = await (0, _toyService.getToyById)(id);
-    console.log(id);
+    const response = await fetch(`https://dummyjson.com/product/${id}`);
+    const brinquedo = await response.json();
     console.log(brinquedo);
     const $brinquedo = `
-     <p class="col fs-4"> ${brinquedo}</p> 
     <section class="container p-2">
    
         <section class="row">
-          <h2>Nome do Brinquedo</h2>
-                <img class="col-sm-3 ms-3 img-thumbnail bg-dark" src="${img1}"></img>
-                <section class="col align-items-center">
-                    <p class="col fs-4"> </p> 
-                    <p class="col fs-1">Descri\xe7\xe3o do Brinquedo</p>
-                    <p class="col fs-3">R$</p>
+                <img class="col-sm-3 ms-3 img-thumbnail bg-dark" src="${brinquedo.images}"/>
+                <section class="col jusify-content-center">
+                     <h2>${brinquedo.title}</h2>
+                    <p class="col fs-3">R$ ${brinquedo.price}</p>
                 </section>
-
                 <h2 class="pt-1 fs-1">Detalhes do Produto</h2>
-                    <p> 
-                        Esse brinquedo blabla \xe9 legal e tal, brinca ai e p\xe1
+                    <p class="col fs-3">${brinquedo.description}</p>
         </section>
     </section>
     `;
     const main = (0, _main.CreateMain)();
-    main.classList = "d-flex";
-    main.insertAdjacentHTML('beforeend', $brinquedo);
+    document.addEventListener("DOMContentLoaded", main.insertAdjacentHTML('beforeend', $brinquedo));
 }
 
-},{"../components/main":"gfq3l","../../media/pistatubarao.jpg":"eyp5S","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../sevice/ToyService":"bCRbn"}],"eyp5S":[function(require,module,exports,__globalThis) {
-module.exports = require("f896fc228d1f03ef").getBundleURL('cOZeh') + "pistatubarao.a1425f1f.jpg" + "?" + Date.now();
-
-},{"f896fc228d1f03ef":"lgJ39"}],"lgJ39":[function(require,module,exports,__globalThis) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return '/';
-}
-function getBaseURL(url) {
-    return ('' + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ('' + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error('Origin not found');
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"3q6Yq":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3q6Yq":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // quando uma categoria é selecionada leva para uma vitrine so com brinquedos daquela categoria
@@ -1109,7 +1059,7 @@ const homePage = ()=>{
     criarcard();
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../sevice/ToyService":"bCRbn"}],"iIXVk":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","../sevice/ToyService":"bCRbn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIXVk":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "NewToyForm", ()=>NewToyForm);

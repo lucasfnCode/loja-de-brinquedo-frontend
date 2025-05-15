@@ -15,19 +15,18 @@ async function fetchData(baseUrl,opition) {
     
 };
 
-export const getAllToys = () => fetchData(`${baseUrl}${uri}`,{
+export const getAllToys = () => 
+    fetchData(`${baseUrl}${uri}`,{
     method: 'GET',
     header: {
         'Content-Type' : 'application/json'
     }
 });
-export const getToyById = (id) => {
-        fetchData(`${baseUrl}${uri}/${id}`,{
+ 
+export const getToyById = (id) => 
+        fetchData(`(${baseUrl} ${uri})/${id}`,{
         method: 'GET',
         header: {
             'Content-Type' : 'application/json'
         }
-    })
-    console.log(baseUrl,uri,id);
-    
-}
+    })   

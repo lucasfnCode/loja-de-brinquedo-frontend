@@ -9,10 +9,11 @@ import { homePage } from "./pages/home";
 import { NewToyForm } from "./pages/novoBrinquedo";
 
 function renderByHashChange(){
+    console.log("index:",location.hash);
     
     ClearBody();
    
-    
+    const id = location.hash.split("/")[1]
     SideBar();
     switch(location.hash){
         case '':
@@ -29,19 +30,18 @@ function renderByHashChange(){
         case '#about':
             aboutUs();
             break;
-            break;
         case '#toymaker':
             NewToyForm();
-            break
+            break;
         default:
             if(location.hash.startsWith("#brinquedo")){
                 const id = location.hash.split("/")[1];
                 if(id){
-                    criarBrinquedo(id);
+                    criarBrinquedo(id)
                 }else{
                     console.log("ID de produto vazio");
                 }
-            }
+        }
     }   
   
 }
@@ -49,4 +49,4 @@ createHeader();
 
 renderByHashChange()
 window.addEventListener('hashchange',renderByHashChange);
-window.addEventListener("load",renderByHashChange);
+// 1:52am eu ganhei
