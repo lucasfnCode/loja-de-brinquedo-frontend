@@ -21,11 +21,13 @@ export const getAllToys = () => fetchData(`${baseUrl}${uri}`,{
         'Content-Type' : 'application/json'
     }
 });
-
-export const getToyById = (id) => fetchData(`${baseUrl}${uri}/${id}`,{
-    method: 'GET',
-    header: {
-        'Content-Type' : 'application/json'
-    }
-
-});
+export const getToyById = (id) => {
+        fetchData(`${baseUrl}${uri}/${id}`,{
+        method: 'GET',
+        header: {
+            'Content-Type' : 'application/json'
+        }
+    })
+    console.log(baseUrl,uri,id);
+    
+}

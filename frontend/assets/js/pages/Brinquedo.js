@@ -4,11 +4,12 @@ import { getToyById } from "../sevice/ToyService";
 const img1 = placeholder;
 
 export async function criarBrinquedo(){
-
-    const brinquedo = await getToyById(location.hash)
+    const id = location.hash.split("/")[1]
+    const brinquedo = await getToyById(id)
            
-    console.log(location.hash);
+    console.log(id);
     console.log(brinquedo);
+    
     const $brinquedo = `
      <p class="col fs-4"> ${brinquedo}</p> 
     <section class="container p-2">

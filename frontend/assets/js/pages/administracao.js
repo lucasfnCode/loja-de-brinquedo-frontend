@@ -1,14 +1,13 @@
 import { CreateMain } from "../components/main"
+import { getAllToys } from "../sevice/ToyService";
 
 export const administracao = () => {
    
   async function criarcard(){
         const prodrow = document.querySelector("#prodrow")
         //isso aq é serviço da 'service' nao consigo imaginar como passar essa funçao do fetch pra service
-        const response = await  fetch("https://dummyjson.com/products/");
-        const result = await response.json();
-        const products = result.products;
-
+   
+        const products = await getAllToys();
          products.forEach(products => {
             const $toy=  `
                 <tr>

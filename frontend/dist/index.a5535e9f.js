@@ -841,13 +841,12 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "administracao", ()=>administracao);
 var _main = require("../components/main");
+var _toyService = require("../sevice/ToyService");
 const administracao = ()=>{
     async function criarcard() {
         const prodrow = document.querySelector("#prodrow");
         //isso aq é serviço da 'service' nao consigo imaginar como passar essa funçao do fetch pra service
-        const response = await fetch("https://dummyjson.com/products/");
-        const result = await response.json();
-        const products = result.products;
+        const products = await (0, _toyService.getAllToys)();
         products.forEach((products)=>{
             const $toy = `
                 <tr>
@@ -917,7 +916,48 @@ const administracao = ()=>{
     removeToy();
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4PeLC":[function(require,module,exports,__globalThis) {
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../sevice/ToyService":"bCRbn"}],"bCRbn":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getAllToys", ()=>getAllToys);
+parcelHelpers.export(exports, "getToyById", ()=>getToyById);
+var _baseurlJs = require("./baseurl.js");
+const uri = "products";
+async function fetchData(baseUrl, opition) {
+    try {
+        const respose = await fetch(baseUrl, opition);
+        if (!respose.ok) throw Error(`erro: ${respose.statusText}`);
+        const result = await respose.json();
+        return result.products;
+    } catch (erro) {
+        console.log(erro);
+        throw erro;
+    }
+}
+const getAllToys = ()=>fetchData(`${(0, _baseurlJs.baseUrl)}${uri}`, {
+        method: 'GET',
+        header: {
+            'Content-Type': 'application/json'
+        }
+    });
+const getToyById = (id)=>{
+    fetchData(`${(0, _baseurlJs.baseUrl)}${uri}/${id}`, {
+        method: 'GET',
+        header: {
+            'Content-Type': 'application/json'
+        }
+    });
+    console.log((0, _baseurlJs.baseUrl), uri, id);
+};
+
+},{"./baseurl.js":"9Tkdh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Tkdh":[function(require,module,exports,__globalThis) {
+// por propblemas tecnicos vou usar o dummyjson como place holder
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "baseUrl", ()=>baseUrl);
+const baseUrl = "https://dummyjson.com/";
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4PeLC":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "criarBrinquedo", ()=>criarBrinquedo);
@@ -927,8 +967,9 @@ var _pistatubaraoJpgDefault = parcelHelpers.interopDefault(_pistatubaraoJpg);
 var _toyService = require("../sevice/ToyService");
 const img1 = (0, _pistatubaraoJpgDefault.default);
 async function criarBrinquedo() {
-    const brinquedo = await (0, _toyService.getToyById)(location.hash);
-    console.log(location.hash);
+    const id = location.hash.split("/")[1];
+    const brinquedo = await (0, _toyService.getToyById)(id);
+    console.log(id);
     console.log(brinquedo);
     const $brinquedo = `
      <p class="col fs-4"> ${brinquedo}</p> 
@@ -992,45 +1033,7 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"bCRbn":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getAllToys", ()=>getAllToys);
-parcelHelpers.export(exports, "getToyById", ()=>getToyById);
-var _baseurlJs = require("./baseurl.js");
-const uri = "products";
-async function fetchData(baseUrl, opition) {
-    try {
-        const respose = await fetch(baseUrl, opition);
-        if (!respose.ok) throw Error(`erro: ${respose.statusText}`);
-        const result = await respose.json();
-        return result.products;
-    } catch (erro) {
-        console.log(erro);
-        throw erro;
-    }
-}
-const getAllToys = ()=>fetchData(`${(0, _baseurlJs.baseUrl)}${uri}`, {
-        method: 'GET',
-        header: {
-            'Content-Type': 'application/json'
-        }
-    });
-const getToyById = (id)=>fetchData(`${(0, _baseurlJs.baseUrl)}${uri}/${id}`, {
-        method: 'GET',
-        header: {
-            'Content-Type': 'application/json'
-        }
-    });
-
-},{"./baseurl.js":"9Tkdh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Tkdh":[function(require,module,exports,__globalThis) {
-// por propblemas tecnicos vou usar o dummyjson como place holder
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "baseUrl", ()=>baseUrl);
-const baseUrl = "https://dummyjson.com/";
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3q6Yq":[function(require,module,exports,__globalThis) {
+},{}],"3q6Yq":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // quando uma categoria é selecionada leva para uma vitrine so com brinquedos daquela categoria
