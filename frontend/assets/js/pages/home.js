@@ -1,5 +1,5 @@
 import { CreateMain } from "../components/main";
-import { getAllProducts, getAllToys } from "../sevice/ToyService";
+import { getAllToys } from "../sevice/ToyService";
 
 export const homePage=()=>{
     const $homeHTML=`
@@ -17,17 +17,39 @@ export const homePage=()=>{
     main.classList = "d-flex flex-col"
     main.insertAdjacentHTML('beforeend',$homeHTML);
     
+
+    async function fetchtoy() {
+        try{
+        const response =await fetch("http://localhost:8080/toys",{
+                method : "GET",
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            })
+        const result = await response.json();
+        console.log(result);
+    
+        return result
+        }catch(error){
+            console.log(error);
+            return error;
+        }
+        
+    }
+    
+   
+
    async function criarcard(){
         const prodrow = document.querySelector("#prodrow")
    
-        const product = await getAllToys();    
-        product.forEach(product => {
+        const product = await fetchtoy();    
+        product.forEach(toy => {
            const $toy =  `
-                <li class="list-group-item col m-3">
-                    <a href="#brinquedo/${product.id}">
-                        <img src="${product.thumbnail}" alt="brinquedo1" >
-                        <p" class="d-block ">${product.title}</p>
-                        <p>${product.price}</p>
+                <li class="list-group-item col m-4">
+                    <a href="#brinquedo/${toy.id}">
+                        <img src="${toy.image}" alt="${toy.image}" >
+                        <p>${toy.description}</p>
+                        <p>${toy.price}</p>
                     </a>
                 </li>
             `

@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"hNhPk":[function(require,module,exports,__globalThis) {
+})({"6xvnb":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -923,13 +923,13 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAllToys", ()=>getAllToys);
 parcelHelpers.export(exports, "getToyById", ()=>getToyById);
 var _baseurlJs = require("./baseurl.js");
-const uri = "products";
+const uri = "toys";
 async function fetchData(baseUrl, opition) {
     try {
         const respose = await fetch(baseUrl, opition);
         if (!respose.ok) throw Error(`erro: ${respose.statusText}`);
         const result = await respose.json();
-        return result.products;
+        return result;
     } catch (erro) {
         console.log(erro);
         throw erro;
@@ -938,13 +938,14 @@ async function fetchData(baseUrl, opition) {
 const getAllToys = ()=>fetchData(`${(0, _baseurlJs.baseUrl)}${uri}`, {
         method: 'GET',
         header: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         }
     });
 const getToyById = (id)=>fetchData(`(${(0, _baseurlJs.baseUrl)} ${uri})/${id}`, {
         method: 'GET',
         header: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Origin": "http://localhost:3000"
         }
     });
 
@@ -953,7 +954,7 @@ const getToyById = (id)=>fetchData(`(${(0, _baseurlJs.baseUrl)} ${uri})/${id}`, 
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "baseUrl", ()=>baseUrl);
-const baseUrl = "https://dummyjson.com/";
+const baseUrl = "https://localhost:8080/";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4PeLC":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -962,20 +963,25 @@ parcelHelpers.export(exports, "criarBrinquedo", ()=>criarBrinquedo);
 var _main = require("../components/main");
 async function criarBrinquedo() {
     const id = location.hash.split("/")[1];
-    const response = await fetch(`https://dummyjson.com/product/${id}`);
+    const response = await fetch(`http://localhost:8080/toys/${id}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
     const brinquedo = await response.json();
     console.log(brinquedo);
     const $brinquedo = `
     <section class="container p-2">
    
         <section class="row">
-                <img class="col-sm-3 ms-3 img-thumbnail bg-dark" src="${brinquedo.images}"/>
+                <img class="col-sm-3 ms-3 img-thumbnail bg-dark" src="${brinquedo.image}"/>
                 <section class="col jusify-content-center">
-                     <h2>${brinquedo.title}</h2>
+                     <h2>${brinquedo.description}</h2>
                     <p class="col fs-3">R$ ${brinquedo.price}</p>
                 </section>
                 <h2 class="pt-1 fs-1">Detalhes do Produto</h2>
-                    <p class="col fs-3">${brinquedo.description}</p>
+                    <p class="col fs-3">${brinquedo.details}</p>
         </section>
     </section>
     `;
@@ -1040,16 +1046,32 @@ const homePage = ()=>{
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex flex-col";
     main.insertAdjacentHTML('beforeend', $homeHTML);
+    async function fetchtoy() {
+        try {
+            const response = await fetch("http://localhost:8080/toys", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const result = await response.json();
+            console.log(result);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
+    }
     async function criarcard() {
         const prodrow = document.querySelector("#prodrow");
-        const product = await (0, _toyService.getAllToys)();
-        product.forEach((product)=>{
+        const product = await fetchtoy();
+        product.forEach((toy)=>{
             const $toy = `
-                <li class="list-group-item col m-3">
-                    <a href="#brinquedo/${product.id}">
-                        <img src="${product.thumbnail}" alt="brinquedo1" >
-                        <p" class="d-block ">${product.title}</p>
-                        <p>${product.price}</p>
+                <li class="list-group-item col m-4">
+                    <a href="#brinquedo/${toy.id}">
+                        <img src="${toy.image}" alt="${toy.image}" >
+                        <p>${toy.description}</p>
+                        <p>${toy.price}</p>
                     </a>
                 </li>
             `;
@@ -1121,6 +1143,6 @@ const NewToyForm = ()=>{
     main.insertAdjacentHTML("beforeend", $toyform);
 };
 
-},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hNhPk","1E7ZB"], "1E7ZB", "parcelRequire94c2")
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6xvnb","1E7ZB"], "1E7ZB", "parcelRequire94c2")
 
 //# sourceMappingURL=index.a5535e9f.js.map
