@@ -850,15 +850,16 @@ var _toyService = require("../sevice/ToyService");
 const administracao = ()=>{
     async function criarcard() {
         const prodrow = document.querySelector("#prodrow");
-        //isso aq é serviço da 'service' nao consigo imaginar como passar essa funçao do fetch pra service
-        const products = await (0, _toyService.getAllToys)();
-        products.forEach((products)=>{
+        const response = await fetch("http://localhost:8080/toys");
+        const result = await response.json();
+        const products = result;
+        products.forEach((toys)=>{
             const $toy = `
                 <tr>
-                <td class="text-center">${products.title}</td>
-                <td class="text-center">${products.category}</td>
-                <td class="text-center">${products.price}</td>
-                <td class="text-center">${products.id}</td>
+                <td class="text-center">${toys.description}</td>
+                <td class="text-center">${toys.category.name}</td>
+                <td class="text-center">${toys.price}</td>
+                <td class="text-center">${toys.id}</td>
                 <td class="text-center">
                     <a class="btn" href="#edit" role="button">
                                 <button class="btn btn-sm btn-outline-warning">
