@@ -5,15 +5,13 @@ import { aboutUs } from "./pages/about";
 import { administracao } from "./pages/administracao";
 import { criarBrinquedo } from "./pages/Brinquedo";
 import { criarCatalogo } from "./pages/catalogo";
+import { criarCategorias } from "./pages/categories";
+
 import { homePage } from "./pages/home";
 import { NewToyForm } from "./pages/novoBrinquedo";
 
-function renderByHashChange(){
-    console.log("index:",location.hash);
-    
+function renderByHashChange(){   
     ClearBody();
-   
-    const id = location.hash.split("/")[1]
     SideBar();
     switch(location.hash){
         case '':
@@ -41,12 +39,20 @@ function renderByHashChange(){
                 }else{
                     console.log("ID de produto vazio");
                 }
+
         }
+             if(location.hash.startsWith("#categoria")){
+                const id = location.hash.split("/")[1];
+                
+                if(id){
+                   criarCategorias();
+                }else{
+                    console.log("ID de produto vazio");
+                }
+            }
     }   
-  
 }
 createHeader();
 
 renderByHashChange()
 window.addEventListener('hashchange',renderByHashChange);
-// 1:52am eu ganhei

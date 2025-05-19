@@ -603,12 +603,11 @@ var _about = require("./pages/about");
 var _administracao = require("./pages/administracao");
 var _brinquedo = require("./pages/Brinquedo");
 var _catalogo = require("./pages/catalogo");
+var _categories = require("./pages/categories");
 var _home = require("./pages/home");
 var _novoBrinquedo = require("./pages/novoBrinquedo");
 function renderByHashChange() {
-    console.log("index:", location.hash);
     (0, _clearbody.ClearBody)();
-    const id = location.hash.split("/")[1];
     (0, _sidebar.SideBar)();
     switch(location.hash){
         case '':
@@ -634,13 +633,18 @@ function renderByHashChange() {
                 if (id) (0, _brinquedo.criarBrinquedo)(id);
                 else console.log("ID de produto vazio");
             }
+            if (location.hash.startsWith("#categoria")) {
+                const id = location.hash.split("/")[1];
+                if (id) (0, _categories.criarCategorias)();
+                else console.log("ID de produto vazio");
+            }
     }
 }
 (0, _header.createHeader)();
 renderByHashChange();
-window.addEventListener('hashchange', renderByHashChange); // 1:52am eu ganhei
+window.addEventListener('hashchange', renderByHashChange);
 
-},{"./components/header":"i9Hva","./components/sidebar":"2O7Kx","./functions/clearbody":"e1A7F","./pages/about":"8zoV7","./pages/administracao":"bIm5Q","./pages/Brinquedo":"4PeLC","./pages/catalogo":"3q6Yq","./pages/home":"1VBCE","./pages/novoBrinquedo":"iIXVk"}],"i9Hva":[function(require,module,exports,__globalThis) {
+},{"./components/header":"i9Hva","./components/sidebar":"2O7Kx","./functions/clearbody":"e1A7F","./pages/about":"8zoV7","./pages/administracao":"bIm5Q","./pages/Brinquedo":"4PeLC","./pages/catalogo":"3q6Yq","./pages/categories":"jPDIU","./pages/home":"1VBCE","./pages/novoBrinquedo":"iIXVk"}],"i9Hva":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createHeader", ()=>createHeader);
@@ -970,7 +974,6 @@ async function criarBrinquedo() {
         }
     });
     const brinquedo = await response.json();
-    console.log(brinquedo);
     const $brinquedo = `
     <section class="container p-2">
    
@@ -999,32 +1002,96 @@ parcelHelpers.export(exports, "criarCatalogo", ()=>criarCatalogo);
 var _main = require("../components/main");
 function criarCatalogo() {
     const $catalogo = `
-        <section class="p-2">
-            <h2>
-                Brinquedos em Destaque
+        <section class="d-flex row justify-content-certer p-2">
+            <h2 class="text-center">
+                catalogo
             </h2>
-             <ul class="d-flex p-0 m-0">
-                <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
-                    <p>pre\xe7o</p>
+             <ul class="categories-row d-flex col- p-0 m-0 text-center" id="categories-row">
+            </ul>
+        </section>
+    `;
+    //se brinquedo category == category category render brinquedo
+    const main = (0, _main.CreateMain)();
+    main.classList = "d-flex flex-col justify-content-center";
+    main.insertAdjacentHTML("beforeend", $catalogo);
+    // 
+    async function getCategories() {
+        const response = await fetch(`http://localhost:8080/categories`);
+        const result = await response.json();
+        return result;
+    }
+    // render categorie
+    async function creteCategorie() {
+        const $catalogorow = document.querySelector("#categories-row");
+        const categorie = await getCategories();
+        categorie.forEach((cats)=>{
+            const $catalogo = `
+                <li class="list-group-item col m-3 categorie">
+                    <a href="#categoria/${cats.id}~${cats.name}"
+                        <p>${cats.name}</p>
+                    </a>
                 </li>
-                <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
-                    <p>pre\xe7o</p>
-                </li>
-                <li class="list-group-item col m-3">
-                    <img src="" alt="brinquedo1">
-                    <label for="brinquedo1">descri\xe7ao</label>
-                    <p>pre\xe7o</p>
-                </li>
+        `;
+            $catalogorow.insertAdjacentHTML("afterbegin", $catalogo);
+        });
+    }
+    creteCategorie();
+}
+
+},{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jPDIU":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "criarCategorias", ()=>criarCategorias);
+var _main = require("../components/main");
+function criarCategorias() {
+    const $catalogo = `
+    
+        
+        <section class="p-2 d-grid">
+            <h2>${location.hash.split("~")[1]}</h2>
+            <ul id="prodrow" class="row p-0 m-0 text-center">
             </ul>
         </section>
     `;
     const main = (0, _main.CreateMain)();
     main.classList = "d-flex flex-col";
-    main.insertAdjacentHTML("beforeend", $catalogo);
+    main.insertAdjacentHTML('beforeend', $catalogo);
+    const id = location.hash.split("/")[1][0];
+    async function fetchcategorias() {
+        try {
+            const response = await fetch("http://localhost:8080/toys");
+            const result = await response.json();
+            const listaDeBrinquedos = [];
+            result.forEach((toy)=>{
+                if (toy.category.id == id) {
+                    listaDeBrinquedos.push(toy);
+                    return listaDeBrinquedos;
+                }
+            });
+            const data = listaDeBrinquedos;
+            return data;
+        } catch (erro) {
+            console.log(erro);
+        }
+    }
+    async function rendertoy() {
+        const prodrow = document.querySelector("#prodrow");
+        const toys = await fetchcategorias();
+        console.log(toys);
+        toys.forEach((toy)=>{
+            const $toy = `
+             <li class="list-group-item col m-4">
+                    <a href="#brinquedo/${toy.id}">
+                        <img src="${toy.image}" alt="${toy.image}" >
+                        <p>${toy.description}</p>
+                        <p>${toy.price} $RS</p>
+                    </a>
+                </li>
+        `;
+            prodrow.insertAdjacentHTML("beforeend", $toy);
+        });
+    }
+    rendertoy();
 }
 
 },{"../components/main":"gfq3l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1VBCE":[function(require,module,exports,__globalThis) {
@@ -1055,7 +1122,6 @@ const homePage = ()=>{
                 }
             });
             const result = await response.json();
-            console.log(result);
             return result;
         } catch (error) {
             console.log(error);

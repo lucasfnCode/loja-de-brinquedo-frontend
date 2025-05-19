@@ -12,7 +12,7 @@ export async function criarBrinquedo(){
             });
 
     const brinquedo = await response.json();
-    console.log(brinquedo);
+
     
     const $brinquedo = `
     <section class="container p-2">
