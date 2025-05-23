@@ -10,10 +10,10 @@ import { criarCategorias } from "./pages/categories";
 import { homePage } from "./pages/home";
 import { NewToyForm } from "./pages/novoBrinquedo";
 
-function renderByHashChange(){   
+function renderByHashChange() {
     ClearBody();
     SideBar();
-    switch(location.hash){
+    switch (location.hash) {
         case '':
         case undefined:
         case '#home':
@@ -32,27 +32,22 @@ function renderByHashChange(){
             NewToyForm();
             break;
         default:
-            if(location.hash.startsWith("#brinquedo")){
+            if (location.hash.startsWith("#brinquedo")) {
                 const id = location.hash.split("/")[1];
-                if(id){
+                if (id) {
                     criarBrinquedo(id)
-                }else{
+                } else {
                     console.log("ID de produto vazio");
                 }
 
-        }
-             if(location.hash.startsWith("#categoria")){
-                const id = location.hash.split("/")[1];
-                
-                if(id){
-                   criarCategorias();
-                }else{
-                    console.log("ID de produto vazio");
-                }
             }
-    }   
+            if (location.hash.startsWith("#categoria")) {
+                const categoryName = location.hash.split("~")[1];
+                criarCategorias(categoryName);
+            }
+    }
 }
 createHeader();
 
 renderByHashChange()
-window.addEventListener('hashchange',renderByHashChange);
+window.addEventListener('hashchange', renderByHashChange);

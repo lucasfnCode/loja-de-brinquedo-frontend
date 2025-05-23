@@ -3,16 +3,16 @@ const uri = "toys";
 
 async function fetchData(baseUrl,option) {
     try{
-        const respose = await fetch(baseUrl,option);
+        const response = await fetch(baseUrl,option);
 
-        if(!respose.ok) throw Error (`erro: ${respose.statusText}`);
+        if(!response.ok) throw Error (`error: ${response.statusText}`);
 
-        const result = await respose.json();
+        const result = await response.json();
 
         return result;
-    }catch(erro){
-        console.log(erro);
-        throw erro;
+    }catch(error){
+        console.log(error);
+        throw error;
     }
     
     
