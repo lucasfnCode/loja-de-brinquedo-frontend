@@ -1,11 +1,14 @@
 import { baseUrl } from "./baseurl.js";
 const uri = "toys";
 
-async function fetchData(baseUrl,opition) {
+async function fetchData(baseUrl,option) {
     try{
-        const respose = await fetch(baseUrl,opition);
+        const respose = await fetch(baseUrl,option);
+
         if(!respose.ok) throw Error (`erro: ${respose.statusText}`);
+
         const result = await respose.json();
+
         return result;
     }catch(erro){
         console.log(erro);
@@ -24,10 +27,10 @@ export const getAllToys = () =>
 });
  
 export const getToyById = (id) => 
-        fetchData(`(${baseUrl} ${uri})/${id}`,{
-        method: 'GET',
-        header: {
-            'Content-Type' : 'application/json',
-            "Origin": "http://localhost:3000"
-        }
-    })   
+    fetchData(`(${baseUrl} ${uri})/${id}`,{
+    method: 'GET',
+    header: {
+        'Content-Type' : 'application/json',
+        "Origin": "http://localhost:3000"
+    }
+})   
