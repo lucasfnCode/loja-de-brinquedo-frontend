@@ -1,41 +1,7 @@
 import { CreateMain } from "../components/main"
-import { getAllToys } from "../sevice/ToyService";
+import { deleteToyById, getAllToys } from "../sevice/ToyService";
 
 export const administracao = () => {
-   
-  async function criarcard(){
-        const prodrow = document.querySelector("#prodrow")
-            const response = await fetch("http://localhost:8080/toys")
-            const result = await response.json();
-        
-        const products = result;
-        
-         products.forEach(toys => {
-            const $toy=  `
-                <tr>
-                <td class="text-center">${toys.description}</td>
-                <td class="text-center">${toys.category.name}</td>
-                <td class="text-center">${toys.price}</td>
-                <td class="text-center">${toys.id}</td>
-                <td class="text-center">
-                    <a class="btn" href="#edit" role="button">
-                                <button class="btn btn-sm btn-outline-warning">
-                                    Editar
-                                </button>
-                                </a>
-                    <button class="delet btn btn-sm btn-outline-danger" >
-                        Excluir
-                    </button>
-                </td>
-            </tr>
-             `
-            prodrow.insertAdjacentHTML("afterbegin",$toy)
-        });       
-    }
-
-    
-//  TODO: O BOTAO DE EXLUIR NAO PODE EXCLUIR O ELEMETO DIRETAMENTE DA TABELA, DEVE TER UM ALERT DE EXCLUÇAO
-// OBG JADIRA AKA MARÇAL DO UX
 
     const $adm = `
         <section class="w-100"> 
@@ -68,24 +34,53 @@ export const administracao = () => {
         </section>
 
     `;
-   
+
+    async function criarcard() {
+        const prodrow = document.querySelector("#prodrow")
+        const products = await getAllToys();
+
+        products.forEach(toys => {
+            const $toy = `
+                <tr>
+                <td class="text-center">${toys.description}</td>
+                <td class="text-center">${toys.category.name}</td>
+                <td class="text-center">${toys.price}</td>
+                <td class="text-center">${toys.id}</td>
+                <td class="text-center">
+                    <a class="btn" href="#edit" role="button">
+                                <button class="btn btn-sm btn-outline-warning">
+                                    Editar
+                                </button>
+                                </a>
+                    <button class="delete btn btn-sm btn-outline-danger" id=${toys.id} >
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+             `
+            prodrow.insertAdjacentHTML("afterbegin", $toy)
+        });
+    };
 
     const main = CreateMain();
     main.insertAdjacentHTML("beforeend", $adm);
 
-    
-    criarcard()
-    const  removeToy= ()=>{
-            document.addEventListener("click", function(event){
-                if (event.target.classList.contains("delet")) {
-                    let row = event.target.closest("tr"); // Encontra o elemento pai <tr>
-                    if (row) {
-                        row.remove(); // Remove o elemento da árvore DOM
-                    }
+    criarcard();
+
+    const removeToy = () => {
+        document.addEventListener("click", function (event) {
+
+            if (event.target.classList.contains("delete")) {
+
+                const test = deleteToyById(event.target.id);
+
+                let row = event.target.closest("tr"); // Encontra o elemento pai <tr>
+                if (row) {
+                    row.remove(); // Remove o elemento da árvore DOM
                 }
-            });
+            }
+        });
     }
 
-  
     removeToy();
 }
