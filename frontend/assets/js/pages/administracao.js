@@ -12,8 +12,7 @@ export const administracao = () => {
                         <th scope="col" class="text-center">Descrição</th>
                         <th scope="col" class="text-center">Categoria</th>
                         <th scope="col" class="text-center">Valor</th>
-                        <th scope="col" class="text-center">Quantidade</th>
-                        <th scope="col" class="text-center">Ação</th>
+                        <th scope="col" class="text-center">Controles</th>
                         </tr>
                     </thead>
                     <tbody id="prodrow" class="table-group-divider">
@@ -32,7 +31,26 @@ export const administracao = () => {
                 </a>
             </div>
         </section>
+    `;
 
+    const modal = `
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteLabel">Confirmação de Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza de que deseja excluir este item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Excluir</button>
+            </div>
+            </div>
+        </div>
+        </div>
     `;
 
     async function criarcard() {
@@ -45,14 +63,13 @@ export const administracao = () => {
                 <td class="text-center">${toys.description}</td>
                 <td class="text-center">${toys.category.name}</td>
                 <td class="text-center">${toys.price}</td>
-                <td class="text-center">${toys.id}</td>
-                <td class="text-center">
+                <td class="d-flex">
                     <a class="btn" href="#edit" role="button">
-                                <button class="btn btn-sm btn-outline-warning">
-                                    Editar
-                                </button>
-                                </a>
-                    <button class="delete btn btn-sm btn-outline-danger" id=${toys.id} >
+                        <button class="btn btn-sm btn-outline-warning">
+                            Editar
+                        </button>
+                    </a>
+                    <button class="delete btn btn-sm btn-outline-danger" data-id="${toys.id}">
                         Excluir
                     </button>
                 </td>
@@ -64,23 +81,47 @@ export const administracao = () => {
 
     const main = CreateMain();
     main.insertAdjacentHTML("beforeend", $adm);
-
+    if (!document.getElementById("confirmDeleteModal")) {
+        main.insertAdjacentHTML("beforebegin", modal);
+    }
     criarcard();
 
-    const removeToy = () => {
-        document.addEventListener("click", function (event) {
 
-            if (event.target.classList.contains("delete")) {
+    const removeToy = (toyId) => {
+        const row = document.querySelector(`button[data-id='${toyId}']`).closest("tr");
+        if (row) {
+            row.remove();
+        }
+    };
 
-                const test = deleteToyById(event.target.id);
 
-                let row = event.target.closest("tr"); // Encontra o elemento pai <tr>
-                if (row) {
-                    row.remove(); // Remove o elemento da árvore DOM
-                }
-            }
-        });
-    }
+    document.addEventListener("click", (event) => {
+        if (event.target.classList.contains("delete")) {
+            const toyId = event.target.getAttribute("data-id");
+            document.getElementById("confirmDeleteModal").setAttribute("data-id", toyId);
+            const modal = new bootstrap.Modal(document.getElementById("confirmDeleteModal"));
+            modal.show();
+        }
+    });
 
-    removeToy();
+    document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
+        const toyId = document.getElementById("confirmDeleteModal").getAttribute("data-id");
+
+        deleteToyById(toyId);
+
+        const modalInstance = bootstrap.Modal.getInstance(document.getElementById("confirmDeleteModal"));
+        modalInstance.hide();
+
+        removeToy(toyId);
+    });
+
+
+    document.getElementById("cancelDeleteBtn").addEventListener("click", () => {
+        const modalInstance = bootstrap.Modal.getInstance(document.getElementById("confirmDeleteModal"));
+        modalInstance.hide();
+    })
+
+
+
+
 }
