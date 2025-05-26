@@ -1,58 +1,104 @@
-import { CreateMain } from "../components/main"
+import { CreateMain } from "../components/main";
+import { getAllCategories } from "../sevice/categoryService";
+import { createToy } from "../sevice/ToyService";
 
-export const NewToyForm = () =>{
+export const NewToyForm = async () => {
+    const categories = await getAllCategories();
+
+    const categoryOptions = categories.map(category =>
+        `<option value="${category.id}">${category.name}</option>`).join("");
+
     const $toyform = `
-    
-    <h1 class="ms-2">Cadastro de Produto</h1>
-    
-    <form class="d-grid w-100 gap-1 p-5">
-        <div class="form-group d-flex justify-content-between">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Codigo:</label>
-            <input type="email" class="form-control w-100"  aria-describedby="emailHelp">
-        </div>
-        <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputPassword1">Descrição:</label>
-            <input type="text" class="form-control" >
-        </div>
-        <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Categoria:</label>
-            <input type="text" class="form-control"  aria-describedby="emailHelp">
-        </div>
-        <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Marca:</label>
-            <input type="text" class="form-control"  aria-describedby="emailHelp">
-        </div>
+    <section class="d-flex flex-column align-self-center">
+        <h1 class="ms-2 align-self-center">Cadastro de Produto</h1>
+        <form class="d-grid w-100 gap-2 p-3" id="toyForm">
+            <div class="form-group d-flex flex-column justify-content-between">
+                <label for="codigo">Código:</label>
+                <input type="text" class="form-control w-100" id="codigo" name="codigo">
+            </div>
+            <div class="form-group d-flex flex-column justify-content-between>
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" name="descricao">
+            </div>
+            <div class="form-group d-flex flex-column justify-content-between">
+                <label for="categoria">Categoria:</label>
+                <select class="form-control" id="categoria" name="categoria">
+                    <option value="" disabled selected>Selecione uma categoria</option>
+                    ${categoryOptions}
+                </select>
+            </div>
+            <div class="form-group d-flex flex-column justify-content-between">
+                <label for="marca">Marca:</label>
+                <input type="text" class="form-control" id="marca" name="marca">
+            </div>
+            <div class="form-group d-flex flex-column justify-content-between">
+                <label for="imagem">Imagem:</label>
+                <input class="form-control" type="file" id="imagem" name="imagem" accept="image/*">
+            </div>
+            <div class="form-group d-flex flex-column justify-content-between">
+                <label for="valor">Valor:</label>
+                <input type="text" class="form-control" id="valor" name="valor">
+            </div>
+            <div class="form-group d-flex flex-column justify-content-between">
+                <label for="detalhes">Detalhes:</label>
+                <input type="text" class="form-control" id="detalhes" name="detalhes">
+            </div>
+            <div class="d-flex justify-content-center gap-2">
+                <button type="submit" class="btn btn-success">Salvar Dados</button>
+                    <button type="button" class="btn btn-danger">
+                        <a class="btn" href="#admin">
+                            Voltar
+                        </a>
+                    </button>
+            </div>
+            <p id="feedbackMessage" class="text-success mt-3" style="display:none;">✅ Produto cadastrado com sucesso!</p>
+        </form>
+    </section>
+    `;
 
-        <div class="form-group d-flex align-items-center">
-            <label for="formFileSm" class="form-label w-50 w-sm-25">Imagem:</label>
-            <input class="form-control" type="file" id="formFileSm">
-        </div>
-
-        <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Valor:</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="form-group d-inline-flex">
-            <label class="text-start w-50 w-sm-25" for="exampleInputEmail1">Detalhes:</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-
-        <div class="d-flex justify-content-center mt-3 gap-2" role="group">
-            <a class="btn" href="" role="button">
-                <button type="submit" class="btn btn-success">
-                    Salvar Dados
-                </button>
-            </a>
-
-            <a class="btn" href="#admin" role="button">
-                <button type="button" class="btn btn-danger">
-                    Voltar
-                </button>
-            </a>
-        </div>
-    </form>
-    `
     const main = CreateMain();
-    main.classList = "d-flex flex-col";
+    main.classList = "d-flex flex-column";
     main.insertAdjacentHTML("beforeend", $toyform);
-}
+
+    document.querySelector("#toyForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const file = document.querySelector("#imagem").files[0];
+
+        const convertToBase64 = (file) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (error) => reject(error);
+            });
+        };
+
+        let base64Image = "";
+        if (file) {
+            base64Image = await convertToBase64(file);
+        }
+
+        const toyData = {
+            code: formData.get("codigo"),
+            description: formData.get("descricao"),
+            brand: formData.get("marca"),
+            image: base64Image,
+            price: formData.get("valor"),
+            details: formData.get("detalhes"),
+            category: {
+                id: formData.get("categoria")
+            }
+        };
+
+        createToy(JSON.stringify(toyData));        
+
+        event.target.reset();
+        document.querySelector("#feedbackMessage").style.display = "block";
+
+        setTimeout(() => {
+            document.querySelector("#feedbackMessage").style.display = "none";
+        }, 3000);
+    });
+};

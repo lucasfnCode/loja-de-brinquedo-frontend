@@ -18,6 +18,16 @@ async function fetchData(baseUrl, option) {
 
 };
 
+export const createToy = (toy) => {
+    return fetchData(`${baseUrl}${uri}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: toy
+    })
+}
+
 export const getAllToys = () => {
     return fetchData(`${baseUrl}${uri}`, {
         method: 'GET',
