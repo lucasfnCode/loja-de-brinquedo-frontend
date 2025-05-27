@@ -21,8 +21,9 @@ export function criarCatalogo() {
 
         categorie.forEach(cats => {
             const $catalogo = `
-                <li class="list-group-item col m-3 categorie">
+                <li class="list-group-item m-3 categorie border border-2 rounded shadow-sm">
                     <a href="#categoria/${cats.id}~${cats.name}">
+                        <img src="${cats.image}" alt="${cats.image}" width="250" >
                         <p>${cats.name}</p>
                     </a>
                 </li>
