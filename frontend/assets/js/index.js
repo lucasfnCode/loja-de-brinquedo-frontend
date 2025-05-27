@@ -6,6 +6,7 @@ import { administracao } from "./pages/administracao";
 import { criarBrinquedo } from "./pages/Brinquedo";
 import { criarCatalogo } from "./pages/catalogo";
 import { criarCategorias } from "./pages/categories";
+import { updateToyComponent } from "./pages/edit";
 
 import { homePage } from "./pages/home";
 import { NewToyForm } from "./pages/novoBrinquedo";
@@ -31,9 +32,12 @@ function renderByHashChange() {
         case '#toymaker':
             NewToyForm();
             break;
+        case '#edit':
+            updateToy();
         default:
             if (location.hash.startsWith("#brinquedo")) {
                 const id = location.hash.split("/")[1];
+                
                 if (id) {
                     criarBrinquedo(id)
                 } else {
@@ -44,6 +48,11 @@ function renderByHashChange() {
             if (location.hash.startsWith("#categoria")) {
                 const categoryName = location.hash.split("~")[1];
                 criarCategorias(categoryName);
+            }
+            if (location.hash.startsWith("#edit")) {
+                const toyId = location.hash.split("/")[1];
+                
+                updateToyComponent(toyId);
             }
     }
 }

@@ -64,7 +64,7 @@ export const administracao = () => {
                 <td class="text-center">${toys.category.name}</td>
                 <td class="text-center">${toys.price}</td>
                 <td class="d-flex">
-                    <a class="btn" href="#edit" role="button">
+                    <a class="btn" href="#edit/${toys.id}" role="button">
                         <button class="btn btn-sm btn-outline-warning">
                             Editar
                         </button>

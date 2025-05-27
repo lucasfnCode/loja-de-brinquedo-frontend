@@ -28,6 +28,16 @@ export const createToy = (toy) => {
     })
 }
 
+export const updateToy = (id, toy) => {
+    return fetchData(`${baseUrl}${uri}/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: toy
+    })
+}
+
 export const getAllToys = () => {
     return fetchData(`${baseUrl}${uri}`, {
         method: 'GET',
@@ -38,7 +48,7 @@ export const getAllToys = () => {
 };
 
 export const getToyById = (id) => {
-    return fetchData(`(${baseUrl}${uri})/${id}`, {
+    return fetchData(`${baseUrl}${uri}/${id}`, {
         method: 'GET',
         header: {
             'Content-Type': 'application/json'
