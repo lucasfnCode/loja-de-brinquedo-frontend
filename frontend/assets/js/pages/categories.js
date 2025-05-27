@@ -1,5 +1,5 @@
 import { CreateMain } from "../components/main"
-import { getAllToys } from "../sevice/ToyService";
+import { getAllToys } from "../sevice/toyService";
 
 export function criarCategorias(categoryName) {
     const $catalogo = `

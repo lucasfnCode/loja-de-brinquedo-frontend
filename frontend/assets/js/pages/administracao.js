@@ -1,5 +1,5 @@
 import { CreateMain } from "../components/main"
-import { deleteToyById, getAllToys } from "../sevice/ToyService";
+import { deleteToyById, getAllToys } from "../sevice/toyService";
 
 export const administracao = () => {
 

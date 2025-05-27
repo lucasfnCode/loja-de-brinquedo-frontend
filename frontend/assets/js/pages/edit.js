@@ -1,6 +1,6 @@
 import { CreateMain } from "../components/main";
 import { getAllCategories } from "../sevice/categoryService";
-import { getToyById, updateToy } from "../sevice/ToyService";
+import { getToyById, updateToy } from "../sevice/toyService";
 
 export const updateToyComponent = async (toyId) => {
     const categories = await getAllCategories();

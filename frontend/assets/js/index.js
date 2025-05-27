@@ -3,7 +3,7 @@ import { SideBar } from "./components/sidebar";
 import { ClearBody } from "./functions/clearbody";
 import { aboutUs } from "./pages/about";
 import { administracao } from "./pages/administracao";
-import { criarBrinquedo } from "./pages/Brinquedo";
+import { criarBrinquedo } from "./pages/brinquedo";
 import { criarCatalogo } from "./pages/catalogo";
 import { criarCategorias } from "./pages/categories";
 import { updateToyComponent } from "./pages/edit";
@@ -37,13 +37,7 @@ function renderByHashChange() {
         default:
             if (location.hash.startsWith("#brinquedo")) {
                 const id = location.hash.split("/")[1];
-                
-                if (id) {
-                    criarBrinquedo(id)
-                } else {
-                    console.log("ID de produto vazio");
-                }
-
+                criarBrinquedo(id)
             }
             if (location.hash.startsWith("#categoria")) {
                 const categoryName = location.hash.split("~")[1];
@@ -51,7 +45,7 @@ function renderByHashChange() {
             }
             if (location.hash.startsWith("#edit")) {
                 const toyId = location.hash.split("/")[1];
-                
+
                 updateToyComponent(toyId);
             }
     }

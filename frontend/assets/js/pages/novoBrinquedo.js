@@ -1,6 +1,6 @@
 import { CreateMain } from "../components/main";
 import { getAllCategories } from "../sevice/categoryService";
-import { createToy } from "../sevice/ToyService";
+import { createToy } from "../sevice/toyService";
 
 export const NewToyForm = async () => {
     const categories = await getAllCategories();

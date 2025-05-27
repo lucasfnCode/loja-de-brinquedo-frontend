@@ -1,24 +1,10 @@
 import { CreateMain } from "../components/main"
+import { getToyById } from "../sevice/toyService";
 
-export async function criarBrinquedo(idToy){
-    // console.log(idToy);
-    
+export async function criarBrinquedo(idToy) {
+    const brinquedo = await getToyById(idToy);
 
-    const id = location.hash.split("/")[1]
 
-    console.log(id);
-    
-
-    const response =await fetch(`http://localhost:8080/toys/${id}`,{
-                method : "GET",
-                headers:{
-                    "Content-Type": "application/json"
-                }
-            });
-
-    const brinquedo = await response.json();
-
-    
     const $brinquedo = `
     <section class="container p-2">
         <section class="row">
@@ -33,6 +19,6 @@ export async function criarBrinquedo(idToy){
     </section>
     `
     const main = CreateMain()
-    document.addEventListener("DOMContentLoaded", 
-    main.insertAdjacentHTML('beforeend',$brinquedo))
+    document.addEventListener("DOMContentLoaded",
+        main.insertAdjacentHTML('beforeend', $brinquedo))
 }
