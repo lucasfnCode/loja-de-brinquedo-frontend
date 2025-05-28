@@ -1,3 +1,4 @@
+import { showModal } from "../components/globalModal";
 import { CreateMain } from "../components/main"
 import { deleteToyById, getAllToys } from "../sevice/toyService";
 
@@ -33,25 +34,7 @@ export const administracao = () => {
         </section>
     `;
 
-    const modal = `
-        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmDeleteLabel">Confirmação de Exclusão</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-            </div>
-            <div class="modal-body">
-                Tem certeza de que deseja excluir este item?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Excluir</button>
-            </div>
-            </div>
-        </div>
-        </div>
-    `;
+
 
     async function criarcard() {
         const prodrow = document.querySelector("#prodrow")
@@ -69,7 +52,7 @@ export const administracao = () => {
                             Editar
                         </button>
                     </a>
-                    <button class="delete btn btn-sm btn-outline-danger" data-id="${toys.id}">
+                    <button class="delete btn btn-sm btn-outline-danger" id="deleteButton" data-id="${toys.id}">
                         Excluir
                     </button>
                 </td>
@@ -81,9 +64,6 @@ export const administracao = () => {
 
     const main = CreateMain();
     main.insertAdjacentHTML("beforeend", $adm);
-    if (!document.getElementById("confirmDeleteModal")) {
-        main.insertAdjacentHTML("beforebegin", modal);
-    }
     criarcard();
 
 
@@ -95,16 +75,18 @@ export const administracao = () => {
     };
 
 
-    document.addEventListener("click", (event) => {
-        if (event.target.classList.contains("delete")) {
+    document.getElementById("deleteButton").addEventListener("click", (event) => {
+       /*  if (event.target.classList.contains("delete")) {
             const toyId = event.target.getAttribute("data-id");
             document.getElementById("confirmDeleteModal").setAttribute("data-id", toyId);
             const modal = new bootstrap.Modal(document.getElementById("confirmDeleteModal"));
             modal.show();
-        }
+            
+        } */
+        showModal();
     });
 
-    document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
+    /* document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
         const toyId = document.getElementById("confirmDeleteModal").getAttribute("data-id");
 
         deleteToyById(toyId);
@@ -113,7 +95,7 @@ export const administracao = () => {
         modalInstance.hide();
 
         removeToy(toyId);
-    });
+    }); */
 
 
     document.getElementById("cancelDeleteBtn").addEventListener("click", () => {
