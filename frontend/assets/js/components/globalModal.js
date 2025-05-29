@@ -1,5 +1,5 @@
 const createModal = () => {
-    `
+    const modal = `
         <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -17,7 +17,7 @@ const createModal = () => {
             </div>
         </div>
         </div>
-    `
+    `;
     main.insertAdjacentHTML("afterbegin", modal);
 };
 

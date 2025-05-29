@@ -60,6 +60,14 @@ export const administracao = () => {
              `
             prodrow.insertAdjacentHTML("afterbegin", $toy)
         });
+
+        const deleteButtons = Array.from(document.getElementsByClassName("delete"));
+
+        deleteButtons.forEach(deleteButton => {
+            deleteButton.addEventListener("click", () => {
+                showModal();
+            })
+        })
     };
 
     const main = CreateMain();
@@ -75,16 +83,7 @@ export const administracao = () => {
     };
 
 
-    document.getElementById("deleteButton").addEventListener("click", (event) => {
-       /*  if (event.target.classList.contains("delete")) {
-            const toyId = event.target.getAttribute("data-id");
-            document.getElementById("confirmDeleteModal").setAttribute("data-id", toyId);
-            const modal = new bootstrap.Modal(document.getElementById("confirmDeleteModal"));
-            modal.show();
-            
-        } */
-        showModal();
-    });
+
 
     /* document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
         const toyId = document.getElementById("confirmDeleteModal").getAttribute("data-id");
@@ -98,10 +97,10 @@ export const administracao = () => {
     }); */
 
 
-    document.getElementById("cancelDeleteBtn").addEventListener("click", () => {
+    /* document.getElementById("cancelDeleteBtn").addEventListener("click", () => {
         const modalInstance = bootstrap.Modal.getInstance(document.getElementById("confirmDeleteModal"));
         modalInstance.hide();
-    })
+    }) */
 
 
 
