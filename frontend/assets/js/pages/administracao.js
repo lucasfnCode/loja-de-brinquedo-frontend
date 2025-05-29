@@ -1,6 +1,6 @@
 import { showModal } from "../components/globalModal";
 import { CreateMain } from "../components/main"
-import { deleteToyById, getAllToys } from "../sevice/toyService";
+import { getAllToys } from "../sevice/toyService";
 
 export const administracao = () => {
 
@@ -35,7 +35,6 @@ export const administracao = () => {
     `;
 
 
-
     async function criarcard() {
         const prodrow = document.querySelector("#prodrow")
         const products = await getAllToys();
@@ -64,45 +63,16 @@ export const administracao = () => {
         const deleteButtons = Array.from(document.getElementsByClassName("delete"));
 
         deleteButtons.forEach(deleteButton => {
-            deleteButton.addEventListener("click", () => {
-                showModal();
+            deleteButton.addEventListener("click", (event) => {
+                const toyId = event.target.getAttribute("data-id");
+                showModal(toyId);
             })
         })
+
     };
 
     const main = CreateMain();
     main.insertAdjacentHTML("beforeend", $adm);
     criarcard();
-
-
-    const removeToy = (toyId) => {
-        const row = document.querySelector(`button[data-id='${toyId}']`).closest("tr");
-        if (row) {
-            row.remove();
-        }
-    };
-
-
-
-
-    /* document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
-        const toyId = document.getElementById("confirmDeleteModal").getAttribute("data-id");
-
-        deleteToyById(toyId);
-
-        const modalInstance = bootstrap.Modal.getInstance(document.getElementById("confirmDeleteModal"));
-        modalInstance.hide();
-
-        removeToy(toyId);
-    }); */
-
-
-    /* document.getElementById("cancelDeleteBtn").addEventListener("click", () => {
-        const modalInstance = bootstrap.Modal.getInstance(document.getElementById("confirmDeleteModal"));
-        modalInstance.hide();
-    }) */
-
-
-
 
 }

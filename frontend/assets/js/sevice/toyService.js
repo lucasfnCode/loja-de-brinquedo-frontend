@@ -7,7 +7,7 @@ async function fetchData(baseUrl, option) {
 
         if (!response.ok) throw Error(`error: ${response.statusText}`);
 
-        const result = await response.json();
+        const result = response.status !== 204 ? await response.json() : null;
 
         return result;
     } catch (error) {

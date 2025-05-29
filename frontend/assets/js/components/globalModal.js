@@ -1,7 +1,9 @@
+import { deleteToyById } from "../sevice/toyService";
+
 const createModal = () => {
     const modal = `
-        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1 aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="confirmDeleteLabel">Confirmação de Exclusão</h5>
@@ -21,10 +23,23 @@ const createModal = () => {
     main.insertAdjacentHTML("afterbegin", modal);
 };
 
-export const showModal = () => {
+export const showModal = (toyId) => {
     if (!document.getElementById("confirmDeleteModal")) {
         createModal();
     }
     const modal = new bootstrap.Modal(document.getElementById("confirmDeleteModal"));
     modal.show();
+
+    /* Substituindo o botão: replaceWith(confirmDeleteBtn.cloneNode(true)) substitui o botão original por uma cópia dele, garantindo que event listeners antigos sejam removidos.
+    Adicionando o novo listener: Como o botão foi recriado, agora ele tem apenas um listener ativo, eliminando as chamadas repetidas. */
+    confirmDeleteBtn.replaceWith(confirmDeleteBtn.cloneNode(true));
+
+    document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
+        deleteToyById(toyId);
+        modal.hide();
+        const row = document.querySelector(`button[data-id='${toyId}']`).closest("tr");
+        if (row) {
+            row.remove();
+        }
+    });
 }
