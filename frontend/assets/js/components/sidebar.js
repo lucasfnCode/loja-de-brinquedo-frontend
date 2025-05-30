@@ -2,10 +2,10 @@ import { CreateMain } from "./main"
 
 export const SideBar = () => {
     const $sidebar = `
-        <section class="sidebar d-none d-sm-block bg-warning vh-100" id="sidebar" style="width: 175px; position: fixed; left: 0;"> 
+        <section class="sidebar d-none d-sm-block bg-warning vh-100 w-25" id="sidebar"> 
             <nav>
-                <h1>Menu</h1>
-                    <div class="list-group">
+                <h1 class="text-center">Menu</h1>
+                    <div class="list-group p-2 gap-2">
                         <a href="#home" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
                             Home
                         </a>

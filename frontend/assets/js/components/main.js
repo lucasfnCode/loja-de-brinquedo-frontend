@@ -5,7 +5,6 @@ export const CreateMain = () =>
         if (!main) {
             main = document.createElement('main');
             main.id = 'main';
-            main.style.marginLeft = "175px"; // Coloquei uma margin do tamanho da sidebar pra main começar a partir dela e o conteúdo ficar alinhado, gambiarra (Y)
             
             const header = document.getElementsByTagName('header')[0];
             if (header) {

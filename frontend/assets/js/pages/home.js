@@ -3,7 +3,7 @@ import { getAllToys } from "../sevice/toyService";
 
 export const homePage=()=>{
     const $homeHTML=`
-        <section class="p-2 d-flex-inline">
+        <section class="p-2 d-flex-inline w-100">
             <h2>Brinquedos em destaque</h2>
             <ul id="prodrow" class="row p-0 m-0 text-center">
             </ul>

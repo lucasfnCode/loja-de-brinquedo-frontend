@@ -3,16 +3,16 @@ import { getAllCategories } from "../sevice/categoryService"
 
 export function criarCatalogo() {
     const $catalogo = `
-        <section class="d-flex row justify-content-certer p-2">
+        <section class="d-flex flex-column p-2 w-100">
             <h2 class="text-center">
                 catalogo
             </h2>
-             <ul class="categories-row d-flex col- p-0 m-0 text-center" id="categories-row">
+             <ul class="categories-row d-flex col- p-0 m-0 text-center justify-content-center" id="categories-row">
             </ul>
         </section>
     `
     const main = CreateMain();
-    main.classList = "d-flex flex-col justify-content-center"
+    main.classList = "d-flex"
     main.insertAdjacentHTML("beforeend", $catalogo)
 
     async function creteCategorie() {
