@@ -1,3 +1,7 @@
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import { createHeader } from "./components/header"
 import { SideBar } from "./components/sidebar";
 import { ClearBody } from "./functions/clearbody";

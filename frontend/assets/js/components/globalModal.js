@@ -1,3 +1,4 @@
+import { Modal } from "bootstrap/dist/js/bootstrap.bundle.min";
 import { deleteToyById } from "../sevice/toyService";
 
 const createModal = () => {
@@ -27,7 +28,9 @@ export const showModal = (toyId) => {
     if (!document.getElementById("confirmDeleteModal")) {
         createModal();
     }
-    const modal = new bootstrap.Modal(document.getElementById("confirmDeleteModal"));
+
+    
+    const modal = new Modal(document.getElementById("confirmDeleteModal"));
     modal.show();
 
     /* Substituindo o botão: replaceWith(confirmDeleteBtn.cloneNode(true)) substitui o botão original por uma cópia dele, garantindo que event listeners antigos sejam removidos.
