@@ -11,7 +11,7 @@ export const updateToyComponent = async (toyId) => {
         `<option value="${category.id}">${category.name}</option>`).join("");
 
     const $toyform = `
-    <section class="d-flex flex-column align-self-center">
+    <section class="d-flex flex-column align-self-center w-75 p-5">
         <h1 class="ms-2 align-self-center">Atualização de Produto</h1>
         <form class="d-grid w-100 gap-2 p-3" id="toyFormUpdate">
             <div class="form-group d-flex flex-column justify-content-between">
@@ -59,7 +59,7 @@ export const updateToyComponent = async (toyId) => {
     `;
 
     const main = CreateMain();
-    main.classList = "d-flex flex-column";
+    main.classList = "d-flex";
     main.insertAdjacentHTML("beforeend", $toyform);
 
     const fillForm = (toy) => {

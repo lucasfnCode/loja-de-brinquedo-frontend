@@ -72,6 +72,7 @@ export const administracao = () => {
     };
 
     const main = CreateMain();
+    main.classList = "d-flex";
     main.insertAdjacentHTML("beforeend", $adm);
     criarcard();
 

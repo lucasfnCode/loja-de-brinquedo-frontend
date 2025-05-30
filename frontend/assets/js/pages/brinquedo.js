@@ -11,14 +11,16 @@ export async function criarBrinquedo(idToy) {
                 <img class="col-sm-3 ms-3 img-thumbnail bg-dark" src="${brinquedo.image}"/>
                 <section class="col jusify-content-center">
                      <h2>${brinquedo.description}</h2>
-                    <p class="col fs-3">R$ ${brinquedo.price}</p>
+                <p class="col fs-3">R$ ${brinquedo.price}</p>
                 </section>
                 <h2 class="pt-1 fs-1">Detalhes do Produto</h2>
-                    <p class="col fs-3">${brinquedo.details}</p>
+                <p class="col fs-3">${brinquedo.details}</p>
         </section>
     </section>
-    `
+    `;
+
     const main = CreateMain()
+    main.classList = "d-flex";
     document.addEventListener("DOMContentLoaded",
-        main.insertAdjacentHTML('beforeend', $brinquedo))
+    main.insertAdjacentHTML('beforeend', $brinquedo))
 }

@@ -1,39 +1,43 @@
 import { CreateMain } from "../components/main";
 import { getAllToys } from "../sevice/toyService";
 
-export const homePage=()=>{
-    const $homeHTML=`
+export const homePage = () => {
+    const $homeHTML = `
         <section class="p-2 d-flex-inline w-100">
             <h2>Brinquedos em destaque</h2>
-            <ul id="prodrow" class="row p-0 m-0 text-center">
-            </ul>
+            <div id="prodrow" class="container">
+                <div class="row justify-content-center gap-2">
+                </div>
+            </div>
         </section>
-    `
+    `;
 
     const main = CreateMain();
-    main.classList = "d-flex  h-100"
-    main.insertAdjacentHTML('beforeend',$homeHTML);    
-   
+    main.classList = "d-flex h-100";
+    main.insertAdjacentHTML('beforeend', $homeHTML);
 
-   async function criarcard(){
-        const prodrow = document.querySelector("#prodrow")
-   
-        const products = await getAllToys();    
+    async function criarcard() {
+        const prodrow = document.querySelector("#prodrow .row");
+        const products = await getAllToys();
+
         products.forEach(toy => {
-           const $toy =  `
-                <li class="list-group-item col m-4">
-                    <a href="#brinquedo/${toy.id}">
-                        <img src="${toy.image}" alt="${toy.image}" >
-                        <p>${toy.description}</p>
-                        <p>${toy.price}</p>
-                    </a>
-                </li>
-            `
-        prodrow.insertAdjacentHTML("beforeend", $toy)
+            const $toy = `
+                <div class="col-md-4 d-flex">
+                    <div class="card m-2 flex-fill h-100">
+                        <img class="card-img-top" src="${toy.image}" alt="${toy.image}" style="height: 170px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column text-center">
+                            <p class="card-text flex-grow-1 m-0">${toy.description}</p>
+                            <p class="card-text m-0"><strong>${toy.price}</strong></p>
+                            <a href="#brinquedo/${toy.id}" class="btn btn-warning mt-auto">Ver detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            prodrow.insertAdjacentHTML("beforeend", $toy);
         });
     }
-    criarcard();
-    
-}
 
-        
+    criarcard();
+};
+
+
