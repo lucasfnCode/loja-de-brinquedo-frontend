@@ -6,16 +6,16 @@ export const SideBar = () => {
             <nav>
                 <h1 class="text-center">Menu</h1>
                     <div class="list-group p-2 gap-2">
-                        <a href="#home" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
+                        <a href="#home" class="nav-link list-group-item list-group-item-warning list-group-item-action rounded"  >
                             Home
                         </a>
-                        <a href="#catalogo" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
+                        <a href="#catalogo" class="nav-link list-group-item list-group-item-warning list-group-item-action rounded"  >
                             Catálogo de Brinquedos
                         </a>
-                        <a href="#admin" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
+                        <a href="#admin" class="nav-link list-group-item list-group-item-warning list-group-item-action rounded"  >
                             Administração
                         </a>    
-                        <a href="#about" class="nav-link list-group-item list-group-item-warning list-group-item-action"  >
+                        <a href="#about" class="nav-link list-group-item list-group-item-warning list-group-item-action rounded"  >
                             Sobre a Equipe
                         </a>
                     </div>

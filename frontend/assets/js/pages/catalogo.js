@@ -4,8 +4,8 @@ import { getAllCategories } from "../sevice/categoryService"
 export function criarCatalogo() {
     const $catalogo = `
         <section class="d-flex flex-column p-2 w-100">
-            <h2 class="text-center">
-                catalogo
+            <h2 class="m-4 p-1 border-bottom">
+                Catálogo de Brinquedos :: categorias
             </h2>
              <ul class="categories-row d-flex col- p-0 m-0 text-center justify-content-center" id="categories-row">
             </ul>

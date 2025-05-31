@@ -3,8 +3,8 @@ import { getAllToys } from "../sevice/toyService";
 
 export function criarCategorias(categoryName) {
     const $catalogo = `
-        <section class="p-2 d-grid">
-            <h2>${location.hash.split("~")[1]}</h2>
+        <section class="p-2 w-100">
+            <h2 class="m-4 p-1 border-bottom">Catálogo de Brinquedos :: ${location.hash.split("~")[1]}</h2>
             <div id="prodrow" class="container">
                 <div class="row justify-content-center">
                 </div>
@@ -28,7 +28,7 @@ export function criarCategorias(categoryName) {
                         <img class="card-img-top" src="${toy.image}" alt="${toy.image}" style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column text-center">
                             <p class="card-text flex-grow-1 m-0">${toy.description}</p>
-                            <p class="card-text m-0"><strong>${toy.price} R$</strong></p>
+                            <p class="card-text m-0"><strong>R$ ${toy.price}</strong></p>
                             <a href="#brinquedo/${toy.id}" class="btn btn-warning mt-auto">Ver detalhes</a>
                         </div>
                     </div>
